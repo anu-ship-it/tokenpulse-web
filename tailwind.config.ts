@@ -9,13 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg:      "#080808",
-        bg2:     "#111111",
-        bg3:     "#161616",
-        border:  "#1e1e1e",
-        teal:    "#06b6d4",
+        bg: "#080808",
+        bg2: "#111111",
+        bg3: "#161616",
+        border: "#1e1e1e",
+        border2: "#1a1a1a",
+        teal: "#06b6d4",
         "teal-light": "#67e8f9",
-        "teal-dim":   "#4a9ba5",
+        "teal-dim": "#4a9ba5",
+        "text-muted": "#333333",
       },
     },
   },
