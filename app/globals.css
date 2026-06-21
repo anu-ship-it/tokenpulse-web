@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #080808;
-  --color-bg2: #111111;
-  --color-bg3: #161616;
-  --color-border: #1e1e1e;
-  --color-border2: #1a1a1a;
+  --color-bg: #0a0a0a;
+  --color-bg2: #141414;
+  --color-bg3: #1a1a1a;
+  --color-border: #262626;
+  --color-border2: #1f1f1f;
   --color-teal: #06b6d4;
   --color-teal-light: #67e8f9;
-  --color-teal-dim: #4a9ba5;
-  --color-text-muted: #333333;
+  --color-teal-dim: #5fa8b0;
+  --color-text-muted: #4a4a4a;
 }
 
 * {
@@ -27,4 +27,10 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+.card-elevated {
+  background: var(--color-bg2);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.02) inset, 0 4px 16px rgba(0,0,0,0.3);
 }
