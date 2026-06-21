@@ -1,28 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --bg:        #080808;
-  --bg2:       #111111;
-  --bg3:       #161616;
-  --border:    #1e1e1e;
-  --border2:   #1a1a1a;
-  --teal:      #06b6d4;
-  --teal-light:#67e8f9;
-  --teal-dim:  #4a9ba5;
-  --text:      #f0f0f0;
-  --text-dim:  #555;
-  --text-muted:#333;
+@theme {
+  --color-bg: #080808;
+  --color-bg2: #111111;
+  --color-bg3: #161616;
+  --color-border: #1e1e1e;
+  --color-border2: #1a1a1a;
+  --color-teal: #06b6d4;
+  --color-teal-light: #67e8f9;
+  --color-teal-dim: #4a9ba5;
+  --color-text-muted: #333333;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--color-bg);
+  color: #f0f0f0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
