@@ -144,7 +144,7 @@ export default function Home() {
 
       {/* ── Features ───────────────────────────── */}
       <section id="features" className="border-t border-border2 px-6 md:px-10 py-24">
-        <div className="max-w-[1100px] mx-auto">
+        <div className="max-w-[900px] mx-auto w-full px-4">
           <div className="text-[10px] font-bold tracking-[0.14em] text-teal uppercase mb-3">
             Features
           </div>
@@ -217,7 +217,7 @@ export default function Home() {
 
       {/* ── Compare ────────────────────────────── */}
       <section id="compare" className="bg-bg2/40 border-t border-b border-border2 px-6 md:px-10 py-24">
-        <div className="max-w-[1100px] mx-auto">
+        <div className="max-w-[900px] mx-auto w-full px-4">
           <div className="text-[10px] font-bold tracking-[0.14em] text-teal uppercase mb-3">
             Compare
           </div>
@@ -286,8 +286,8 @@ export default function Home() {
       </section>
 
       {/* ── Tips Preview ───────────────────────── */}
-      <section className="px-6 md:px-10 py-24">
-        <div className="max-w-[1100px] mx-auto">
+      <section className="px-4 md:px-8 py-20">
+        <div className="max-w-[900px] mx-auto w-full px-4">
           <div className="text-[10px] font-bold tracking-[0.14em] text-teal uppercase mb-3">
             Token Tips
           </div>
@@ -347,7 +347,7 @@ export default function Home() {
 
       {/* ── About ───────────────────────────────── */}
       <section className="border-t border-border2 px-6 md:px-10 py-24">
-        <div className="max-w-[1100px] mx-auto">
+        <div className="max-w-[900px] mx-auto w-full px-4">
           <div className="text-[10px] font-bold tracking-[0.14em] text-teal uppercase mb-3">
             About
           </div>
