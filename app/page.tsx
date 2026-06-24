@@ -7,11 +7,11 @@ export default function Home() {
   return (
     <>
       {/* ── Hero ─────────────────────────────────── */}
-      <section className="relative overflow-hidden px-6 md:px-10 pt-36 pb-28">
+      <section className="relative overflow-hidden  pt-36 pb-28">
         <div className="absolute -top-48 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-teal/[0.07] rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative max-w-[1100px] mx-auto w-full grid md:grid-cols-2 gap-16 items-center">
-          <div>
+        <div className="relative max-w-[1100px] mx-auto w-full grid md:grid-cols-2 gap-16 items-center px-6 md:px-10">
+          
             <div className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-widest text-teal uppercase bg-teal/[0.1] border border-teal/25 px-3 py-1.5 rounded-full mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse" />
               No waitlist · Free now
@@ -143,7 +143,7 @@ export default function Home() {
       </div>
 
       {/* ── Features ───────────────────────────── */}
-      <section id="features" className="border-t border-border2 px-6 md:px-10 py-24">
+      <section id="features" className="border-t border-border2 py-24">
         <div className="max-w-[900px] mx-auto w-full px-4">
           <div className="text-[10px] font-bold tracking-[0.14em] text-teal uppercase mb-3">
             Features
@@ -216,7 +216,7 @@ export default function Home() {
       </section>
 
       {/* ── Compare ────────────────────────────── */}
-      <section id="compare" className="bg-bg2/40 border-t border-b border-border2 px-6 md:px-10 py-24">
+      <section id="compare" className="bg-bg2/40 border-t border-b border-border2 py-24">
         <div className="max-w-[900px] mx-auto w-full px-4">
           <div className="text-[10px] font-bold tracking-[0.14em] text-teal uppercase mb-3">
             Compare
@@ -346,7 +346,7 @@ export default function Home() {
       </section>
 
       {/* ── About ───────────────────────────────── */}
-      <section className="border-t border-border2 px-6 md:px-10 py-24">
+      <section className="border-t border-border2 py-24">
         <div className="max-w-[900px] mx-auto w-full px-4">
           <div className="text-[10px] font-bold tracking-[0.14em] text-teal uppercase mb-3">
             About

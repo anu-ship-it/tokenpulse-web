@@ -23,7 +23,7 @@ const proFeatures = [
 
 export default function PricingPage() {
   return (
-    <section className="px-6 md:px-10 pt-36 pb-24">
+    <section className="pt-36 pb-24">
       <div className="max-w-[1100px] mx-auto">
         <div className="text-center mb-16">
           <div className="text-[10px] font-bold tracking-[0.14em] text-teal uppercase mb-3">

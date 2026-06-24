@@ -78,7 +78,7 @@ const tagLabels: Record<Entry["tag"], string> = {
 
 export default function ChangelogPage() {
   return (
-    <section className="px-6 md:px-10 pt-36 pb-24">
+    <section className="pt-36 pb-24">
       <div className="max-w-[760px] mx-auto">
         <div className="text-[10px] font-bold tracking-[0.14em] text-teal uppercase mb-3">
           Changelog
