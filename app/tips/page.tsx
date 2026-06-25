@@ -128,7 +128,7 @@ export default function TipsPage() {
 
   return (
     <section className="pt-36 pb-24">
-      <div className="max-w-[1100px] mx-auto">
+      <div className="max-w-[1100px] mx-auto w-full px-6 md:px-10">
         <div className="text-[10px] font-bold tracking-[0.14em] text-teal uppercase mb-3">
           Token Tips
         </div>
