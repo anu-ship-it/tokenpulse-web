@@ -1,39 +1,39 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import type { Metadata } from 'next'
+import { Space_Grotesk, JetBrains_Mono } from 'next/font/google'
+import './globals.css'
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  weight: ['300', '400', '500', '600', '700'],
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  weight: ['400', '500', '600'],
+})
 
 export const metadata: Metadata = {
-  title: "TokenPulse — Token & Rate Limit Tracker for Claude & ChatGPT",
+  title: {
+    default: 'TokenPulse — Never lose your flow to an AI rate limit again',
+    template: '%s | TokenPulse',
+  },
   description:
-    "TokenPulse tracks your token usage and rate limits in real time on Claude and ChatGPT. Live token bar, smart notifications, daily history. Free Chrome extension — no waitlist, no account.",
-  metadataBase: new URL("https://tokenpulse.app"),
+    'Live token tracking across Claude, ChatGPT, Gemini and DeepSeek. Real rate limits, smart notifications, cost tracking. Free Chrome extension for developers.',
+  metadataBase: new URL('https://token-pulse.in'),
   openGraph: {
-    title: "TokenPulse — Token & Rate Limit Tracker",
-    description:
-      "Never get cut off mid-conversation again. Live token tracking for Claude and ChatGPT.",
-    type: "website",
-    url: "https://tokenpulse.app",
+    siteName: 'TokenPulse',
+    type: 'website',
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "TokenPulse — Token & Rate Limit Tracker",
-    description: "Live token tracking for Claude and ChatGPT. Free, no account needed.",
-  },
-};
+  twitter: { card: 'summary_large_image' },
+  robots: { index: true, follow: true },
+}
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="bg-bg text-white antialiased">
-        <Nav />
-        <main>{children}</main>
-        <Footer />
-      </body>
+    <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
+      <body>{children}</body>
     </html>
-  );
+  )
 }
