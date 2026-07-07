@@ -1,0 +1,58 @@
+---
+title: "Claude Rate Limits Explained: 5-Hour Session, 7-Day Weekly, and How to Track Both"
+description: "A complete guide to Claude's two-tier rate limit system — what resets when, how to check your usage, and how to stop getting cut off mid-conversation."
+date: "2026-01-15"
+readingTime: "7 min read"
+tags: ["claude", "rate limits", "AI tools", "developer"]
+---
+
+If you've ever hit a wall mid-conversation on Claude and had no idea why, you've run into Claude's rate limit system. It's more nuanced than a simple daily cap — and understanding the two layers is the difference between planning your work around it and getting blindsided.
+
+## The Two-Tier System
+
+Claude uses two independent rate limits that reset on different schedules:
+
+**5-Hour Session Limit**
+This is the short-term window. Claude tracks how many tokens (input + output) you've consumed over the last 5 hours. When you hit this limit, you can't send new messages until the window resets. The reset time is rolling — it's 5 hours from when you *started*, not from midnight.
+
+**7-Day Weekly Limit**
+This is the longer-term cap. Claude tracks cumulative usage over the past 7 days. This limit is shared across all your conversations across all projects. It resets on a weekly basis.
+
+Both limits operate independently. You can exhaust your 5-hour session without touching your 7-day limit. You can also be under your 5-hour limit but still get blocked if your 7-day usage is maxed out.
+
+## What Triggers a Rate Limit?
+
+Every message you send counts — both the tokens in your prompt and the tokens in Claude's response. Long conversations, large file uploads, and detailed outputs all burn quota faster.
+
+The models with the highest capability (Opus) burn quota faster than lighter models (Haiku). If you're hitting limits frequently, switching to a faster model for simple tasks saves your Opus quota for the work that actually needs it.
+
+## How to Check Your Current Usage
+
+Anthropic doesn't display your rate limit usage anywhere in the Claude.ai UI. There's no progress bar, no percentage, no countdown timer. You're flying blind unless you use a third-party tool.
+
+Claude's internal API exposes usage data that extensions can read from your existing browser session — no API key required. **TokenPulse** reads this data and shows you both your 5-hour session usage and your 7-day weekly usage in a popup, with exact reset countdowns.
+
+## How to Stop Getting Cut Off
+
+1. **Watch your 5-hour window before long sessions.** If you're about to start a 2-hour debugging session, check your session percentage first. If you're at 70%, you might not make it through.
+
+2. **Use faster models for simple tasks.** Formatting, summarizing, and rewriting don't need Opus. Save the premium quota for complex reasoning.
+
+3. **Start new chats when topics change.** Every message in a thread adds to context. Carrying old context into a new task wastes tokens on both sides.
+
+4. **Ask Claude to compress context.** When a conversation is getting long, ask: *"Summarize the key decisions and conclusions in under 200 words."* Then start a new chat with just that summary.
+
+5. **Set notifications before you hit 100%.** Knowing at 75% gives you time to wrap up. Knowing at 100% means you're already blocked.
+
+## The Reset Schedule
+
+Neither limit resets at midnight. Both are rolling windows:
+
+- **5-hour limit**: resets 5 hours after the conversation that pushed you over started
+- **7-day limit**: resets 7 days after the activity that consumed the quota
+
+This means your reset time changes every time you have a heavy session. A countdown timer that shows exactly when you'll be unblocked is far more useful than a generic "try again later" message.
+
+---
+
+TokenPulse shows both limits, both percentages, and both countdowns — pulled directly from Claude's API, updated every 30 seconds, displayed in a popup with zero setup required. [Install free →](https://chromewebstore.google.com/detail/tokenpulse-%E2%80%94-chatgpt-clau/oimclhdbljodjkankcnalklchfcehhic)

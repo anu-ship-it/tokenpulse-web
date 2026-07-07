@@ -1,0 +1,71 @@
+---
+title: "How to Track AI Usage Across Claude, ChatGPT, Gemini and DeepSeek"
+description: "Most developers use 3-4 AI tools simultaneously with no visibility into total usage or cost. Here's how to track everything in one place."
+date: "2026-01-25"
+readingTime: "6 min read"
+tags: ["AI tools", "usage tracking", "developer productivity", "cost tracking"]
+---
+
+The average developer using AI tools in 2026 isn't using one. They're using Claude for reasoning-heavy work, ChatGPT for quick lookups, Gemini for long documents, and Cursor or DeepSeek for code generation. Each tool has its own limits, its own pricing, and its own blind spots.
+
+The problem: there's no unified view. You're managing four separate rate limits, four separate cost centers, and four separate context windows — with no single place to see them.
+
+## Why Fragmented AI Usage Is a Real Problem
+
+When you use one AI tool, rate limits are an occasional annoyance. When you use four, they become a workflow management problem.
+
+You might hit Claude's 5-hour session limit mid-session and switch to ChatGPT, without knowing that ChatGPT's context window is already at 80% from an earlier session. You finish nothing cleanly. You lose context twice.
+
+Or you get to the end of the month and realize you've been paying for API calls across three tools without any sense of where the money actually went.
+
+## What Unified Tracking Looks Like
+
+The ideal view is a single popup that shows, for whichever AI tool you're currently using:
+
+- **Context window usage** — how much of the current conversation's memory is consumed
+- **Rate limit status** — how close you are to a hard stop (where the platform exposes this)
+- **Cost estimate** — what this session, today, and this week has cost you in real dollars
+- **Reset countdown** — when you'll be back to full capacity
+
+Switching between tools shouldn't mean switching between trackers.
+
+## What Each Platform Exposes
+
+The platforms differ significantly in what data they make available:
+
+**Claude** has the most developer-friendly internal API. It exposes your 5-hour session utilization, your 7-day weekly utilization, and reset timestamps — all readable from your browser session without an API key. This is why Claude integrations tend to be the most detailed.
+
+**ChatGPT** exposes context window state through the DOM, but doesn't surface hard rate limit data through a session-accessible endpoint the way Claude does. Context tracking is possible; rate limit tracking is not.
+
+**Gemini** has a 1 million token context window — far larger than Claude or ChatGPT — but doesn't expose rate limit data in a session-accessible way. Context tracking is the main value-add.
+
+**DeepSeek** works similarly to ChatGPT in terms of what's accessible. Context window tracking is possible; deeper API-level rate data isn't surfaced.
+
+## Cost Tracking Across Tools
+
+The per-token pricing for each model is public and consistent:
+
+| Model | Input (per 1M tokens) |
+|---|---|
+| Claude Sonnet 4 | ~$3.00 |
+| GPT-4o | ~$2.50 |
+| Gemini 1.5 Pro | ~$1.25 |
+| DeepSeek V3 | ~$0.27 |
+
+A tracker that knows which model you're using and how many tokens you've consumed can give you a real-time cost estimate. It's not accounting-grade accuracy — output tokens cost more than input, and pricing changes — but it's close enough to know if you've spent $0.03 or $3.00 in a session.
+
+## How to Set This Up Today
+
+**TokenPulse** handles cross-platform tracking with a single Chrome extension install. No API keys, no accounts, no configuration. It reads your existing browser sessions on Claude, ChatGPT, Gemini, and DeepSeek simultaneously.
+
+The popup shows whichever platform's tab you're currently on. The daily history panel shows usage across all platforms for the past week.
+
+For Claude specifically, it pulls real rate limit data — session percentage, weekly percentage, exact reset time — from Claude's internal API using the same session token your browser already has.
+
+## What's Coming
+
+Cross-device sync, longer history, and cost graphs across a 90-day window are the next additions. The AI usage timeline — a single chronological view of every session across every tool in a day — is the longer-term goal. Nobody has built this yet. It's the moat.
+
+---
+
+TokenPulse tracks Claude, ChatGPT, Gemini, and DeepSeek from a single Chrome extension. Free to install, no API key, no account. [Start tracking →](https://chromewebstore.google.com/detail/tokenpulse-%E2%80%94-chatgpt-clau/oimclhdbljodjkankcnalklchfcehhic)
