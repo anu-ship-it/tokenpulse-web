@@ -1,14 +1,23 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  pageExtensions: ['ts', 'tsx', 'mdx'],
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   images: {
-    remotePatterns: [
+    domains: ['raw.githubusercontent.com'],
+  },
+  async redirects() {
+    return [
       {
-        protocol: 'https',
-        hostname: 'raw.githubusercontent.com',
+        source: '/uninstall.html',
+        destination: '/uninstall',
+        permanent: true,
       },
-    ],
+      {
+        source: '/support.html',
+        destination: '/support',
+        permanent: true,
+      },
+    ]
   },
 }
 
