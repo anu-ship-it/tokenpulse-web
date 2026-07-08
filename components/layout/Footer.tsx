@@ -1,46 +1,83 @@
-import Link from 'next/link'
-import Image from 'next/image'
+import Link from "next/link";
+import Image from "next/image";
 
-const CHROME_URL =
-  'https://chromewebstore.google.com/detail/tokenpulse-%E2%80%94-chatgpt-clau/oimclhdbljodjkankcnalklchfcehhic'
+const links = {
+  Product: [
+    { label: 'Features', href: '/#features' },
+    { label: 'Platform', href: '/#platforms' },
+    { label: 'Pricing', href: '/#pricing' },
+    { label: 'Roadmap', href: '/#roadmap' },
+  ],
+  Resources: [
+    { label: 'Blog', href: '/blog' },
+    { label: 'Support', href: '/support' },
+    { label: 'GitHub', href: 'https://github.com/anu-ship-it/TokenPulse', external: true },
+    { label: 'Changelog', href: '/#roadmap' },
+  ],
+  Legal: [
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Terms', href: '/terms' },
+    { label: 'Contact', href: 'mailto:anup17508@gmail.com', external: true },
+  ],
+}
 
-export function Footer() {
+export default function Footer() {
   return (
-    <footer className="relative z-10 border-t border-[var(--b)] py-7 px-6">
-      <div className="max-w-6xl mx-auto flex items-center justify-between flex-wrap gap-4">
-        <div className="flex items-center gap-3">
-          <div className="w-5 h-5 rounded-[5px] overflow-hidden border border-[var(--ab)]">
-            <Image
-              src="https://raw.githubusercontent.com/anu-ship-it/TokenPulse/main/src/icons/icon128.png"
-              alt="TokenPulse"
-              width={20}
-              height={20}
-            />
-          </div>
-          <span className="text-[13px] font-semibold text-[var(--t)]">TokenPulse</span>
-          <span className="mono text-[10px] text-[var(--t3)]">
-            © 2026 · Built by Anoop Kumar & Mansi Rathore
-          </span>
-        </div>
-        <div className="flex items-center gap-5 flex-wrap">
-          {[
-            { href: '/blog', label: 'Blog' },
-            { href: '/support', label: 'Support' },
-            { href: 'https://github.com/anu-ship-it/TokenPulse', label: 'GitHub', external: true },
-            { href: CHROME_URL, label: 'Chrome Store', external: true },
-            { href: 'mailto:anup17508@gmail.com', label: 'Contact' },
-          ].map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              target={l.external ? '_blank' : undefined}
-              rel={l.external ? 'noopener noreferrer' : undefined}
-              className="text-[12px] text-[var(--t3)] hover:text-[var(--t2)] transition-colors no-underline"
-            >
-              {l.label}
+    <footer className="relative z-10 border-t border-white/5 bg-[#080809]">
+      <div className="max-w-7x1 mx-auto px-6 lg:px-12 py-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+          {/* Brand */}
+          <div className="col-span-2 md:col-span-1">
+            <Link href="/" className="flex items-center gap-2.5 mb-4">
+              <div className="w-7 h-7 rounded-lg bg-[#141418] border border-[rgba(108,95,255,0.22)] overflow-hidden flex items-center justify-center">
+                <Image
+                 src="https://raw.githubusercontent.com/anu-ship-it/TokenPulse/main/src/icons/icons128.png"
+                 alt="TokenPulse"
+                 width={22}
+                 height={22}
+                 className="rounded-sm"
+                /> 
+              </div>
+              <span className="text-sm font-bold text-[#EDEEF2]">TokenPulse</span>
             </Link>
+            <p className="text-xs text-[#32324A] leading-relaxed mb-4">
+              Live token tracking for developers who use AI tools daily.
+            </p>
+            < p className="font-mono text-[10px] text-[#32324A]">
+              Built by Anoop Kumar & Mansi Rathore
+            </p>
+          </div>
+
+          {/* Link groups */}
+          {Object.entries(links).map(([group, items]) => (
+            <div key={group}>
+              <div className="font-mono text-[10px] font-semibold text-[#32324A] uppercase tracking-widest mb-4">
+                {group}
+                </div>
+                <ul className="flex flex-col gap-2.5">
+                  {items.map(item => (
+                    <li key={(item.label)}>
+                      {'external' in item && item.external ? (
+                        <a
+                         href={item.href}
+                         target="_blank"
+                         rel="noopener noreferrer"
+                         className="text-sm text-[#72728A] hover:text-[#EDEEF2] transition-colors">
+                          {item.label}
+                         </a>
+                      ) : (
+                        <Link href={item.href} className="text-sm text-[#72728A] hover:text-[#EDEEF2] transition-colors">
+                          {item.label}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+                </div>
           ))}
         </div>
+
+        <div className="border-t"
       </div>
     </footer>
   )
