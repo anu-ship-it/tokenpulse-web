@@ -36,7 +36,29 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
 
   if (href) {
     if (external) return (
-      
+      <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
+        {loading ? <Spinner /> : children}
+      </a>
     )
+    return <Link href={href} className={cls}>{children}</Link>
   }
+
+  return (
+    <button ref={ref} disabled={disabled || loading} className={cls} {...props}>
+      {loading ? <Spinner /> : children}
+    </button>
+  )
 })
+
+Button.displayName = 'Button'
+
+function Spinner() {
+  return (
+    <svg className="animate-spin h-4 w-4" fill="nome" viewBox="0 0 24 24">
+      <Circle className="opacity-25" cx="12" cy="12" cy="12" r="10" stroke="currentColor" strokewidth="4"/>
+      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+    </svg>
+  )
+}
+
+export default Button
