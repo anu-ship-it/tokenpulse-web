@@ -1,39 +1,42 @@
-'use client'
+import { type ButtonHTMLAttributes, forwardRef } from "react";
+import Link from 'next/link';
+import { clsx } from 'clsx';
 
-import { forwardRef } from 'react'
-import { cn } from '@/lib/utils'
-
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'warning'
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'priimary' | 'secondary' | 'ghost' | 'warn'
   size?: 'sm' | 'md' | 'lg'
-  asChild?: boolean
+  href?: string
+  external?: boolean
+  loading?: boolean
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = 'primary', size = 'md', children, ...props }, ref) => {
-    const base =
-      'inline-flex items-center justify-center font-semibold transition-all duration-150 cursor-pointer border-0 outline-none focus-visible:ring-2 focus-visible:ring-[var(--acc)] disabled:opacity-50 disabled:cursor-not-allowed'
+const variants = {
+  primary: 'bg-[#6C5FFF] text-white hover:bg-[#7D71FF] hover:-translate-y-0.5 shadow-[0_4px_24px_rgba(108,95,255,0.3)]',
+  secondary: 'bg-[#141418] text-[#EDEEF2] border border-white/8 hover:border-[rgba(108,95,255,0.22)] hover:text-white',
+  ghost: 'text-[#72728A] hover:text-[#EDEEF2]',
+  warn: 'bg-[rgba(245,158,11,0.12)] hover:bg-[rgba(245,158,11,0.2)]',
+}
 
-    const variants = {
-      primary:   'bg-[var(--acc)] text-white hover:bg-[#7D71FF] hover:-translate-y-px hover:shadow-[0_8px_24px_rgba(108,95,255,0.3)]',
-      secondary: 'bg-[var(--s2)] text-[var(--t2)] border border-[var(--bm)] hover:text-[var(--t)] hover:border-[var(--ab)]',
-      ghost:     'bg-transparent text-[var(--t2)] hover:text-[var(--t)]',
-      warning:   'bg-[rgba(245,158,11,0.12)] text-[var(--warn)] border border-[rgba(245,158,11,0.3)] hover:bg-[rgba(245,158,11,0.2)]',
-    }
+const sizes = {
+  sm: 'text-xs px-3 py-1.5 rounded-md',
+  md: 'text-sm px-5 py-2.5 rounded-lg',
+  lg: 'text-[15px] px-6 py-3.5 rounded-x1',
+}
 
-    const sizes = {
-      sm: 'text-xs px-3 py-2 rounded-lg',
-      md: 'text-sm px-5 py-3 rounded-[10px]',
-      lg: 'text-[15px] px-6 py-[14px] rounded-[10px]',
-    }
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
+  variant = 'primary', size = 'md', href, external, loading,
+  children, className, disabled, ...props
+}, ref) => {
+  const cls = clsx(
+    'inline-flex items-center justify-center gap-2 font-semibold transition-all duration-150 cursor-pointer',
+    variants[variant], sizes[size],
+    (disabled || loading) && 'opacity-50 cursor-not-allowed pointer-events-none',
+    className,
+  )
 
-    return (
-      <button ref={ref} className={cn(base, variants[variant], sizes[size], className)} {...props}>
-        {children}
-      </button>
+  if (href) {
+    if (external) return (
+      
     )
   }
-)
-Button.displayName = 'Button'
-
-export { Button }
+})
