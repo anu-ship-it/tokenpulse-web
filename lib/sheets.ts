@@ -1,46 +1,38 @@
 import { google } from 'googleapis'
 
-const SHEET_ID = process.env.GOOGLE_SHEET_ID
-const SERVICE_ACCOUNT_EMAIL = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL
-const PRIVATE_KEY = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n')
+function getAuth() {
+  const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL
+  const key = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n')
 
-function isConfigured(): boolean {
-  return !!(SHEET_ID && SERVICE_ACCOUNT_EMAIL && PRIVATE_KEY)
-}
+  if (!email || !key) return null
 
-async function getSheets() {
-  const auth = new google.auth.JWT({
-    email: SERVICE_ACCOUNT_EMAIL,
-    key: PRIVATE_KEY,
+  return new google.auth.JWT({
+    email,
+    key,
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   })
-  return google.sheets({ version: 'v4', auth })
 }
 
-export interface SheetRow {
-  sheet: 'Waitlist' | 'Support' | 'Uninstall'
-  values: string[]
-}
+export async function appendToSheet(tab: string, values: string[]) {
+  const auth = getAuth()
+  const sheetId = process.env.GOOGLE_SHEET_ID
 
-export async function appendRow({ sheet, values }: SheetRow): Promise<boolean> {
-  if (!isConfigured()) {
-    console.warn('[sheets] Not configured — skipping sheet append. Row:', values)
-    return false
+  // Graceful degrafe - if credentials missing, skip silently
+  if (!auth || !sheetId) {
+    console.warn('Google Sheets credentials not configured - skipping sheet write')
+    return
   }
 
   try {
-    const sheets = await getSheets()
+    const sheets = google.sheets({ version: 'v4', auth })
     await sheets.spreadsheets.values.append({
-      spreadsheetId: SHEET_ID!,
-      range: `${sheet}!A1`,
+      spreadsheetId: sheetId,
+      range: `${tab}!A:Z`,
       valueInputOption: 'USER_ENTERED',
-      requestBody: {
-        values: [[new Date().toISOString(), ...values]],
-      },
+      requestBody: { values: [values] },
     })
-    return true
   } catch (err) {
-    console.error('[sheets] Append failed:', err)
-    return false
+    // Never let sheet errors break the API response
+    console.error('Google Sheets write failed:', err)
   }
 }

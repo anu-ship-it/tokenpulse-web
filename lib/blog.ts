@@ -1,8 +1,9 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import readingTime from 'reading-time'
 
-const POSTS_DIR = path.join(process.cwd(), 'content/blog')
+const BLOG_DIR = path.join(process.cwd(), 'content/blog')
 
 export interface PostMeta {
   slug: string
@@ -11,45 +12,48 @@ export interface PostMeta {
   date: string
   readingTime: string
   tags: string[]
+  published: boolean
 }
 
 export interface Post extends PostMeta {
   content: string
 }
 
-export async function getAllPosts(): Promise<PostMeta[]> {
-  const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith('.mdx'))
-
+export function getAllPosts(): PostMeta[] {
+  if (!fs.existsSync(BLOG_DIR)) return []
+  const files = fs.readdirSync(BLOG_DIR).filter(f => f.endsWith('.mdx'))
   return files
-    .map((file) => {
-      const raw = fs.readFileSync(path.join(POSTS_DIR, file), 'utf8')
+    .map(file => {
+      const slug = files.replace('.mdx', '')
+      const raw = fs.readFileSync(path.join(BLOG_DIR, file), 'utf8')
       const { data } = matter(raw)
       return {
-        slug: file.replace('.mdx', ''),
-        title: data.title,
-        description: data.description,
-        date: data.date,
-        readingTime: data.readingTime ?? '5 min read',
-        tags: data.tags ?? [],
+        slug,
+        title: data.title || '',
+        description: data.description || '',
+        date: data.date || '',
+        readingTime: readingTime(raw).text,
+        tags: data.tags || [],
+        published: data.published !== false,
       }
     })
+    .filter(p => p.published)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
-export async function getPost(slug: string): Promise<Post | null> {
-  const filePath = path.join(POSTS_DIR, `${slug}.mdx`)
+export function getPost(slug: string): Post | null {
+  const filePath = path.join(BLOG_DIR, `${slug}.mdx`)
   if (!fs.existsSync(filePath)) return null
-
   const raw = fs.readFileSync(filePath, 'utf8')
   const { data, content } = matter(raw)
-
   return {
     slug,
-    title: data.title,
-    description: data.description,
-    date: data.date,
-    readingTime: data.readingTime ?? '5 min read',
-    tags: data.tags ?? [],
+    title: data.title || '',
+    description: data.description || '',
+    date: data.date || '',
+    readingTime: readingTime(raw).text,
+    tags: data.tags || [],
+    published: data.published !== false,
     content,
   }
 }
