@@ -33,6 +33,13 @@
   .border-acc { border-color: rgba(108, 95, 255, 0.22); }
 
   .gradient-heading {
-    
+    background: linear-gradient(135deg, #EDEEF2 0%, #7A7ABC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .ambient-glow {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
   }
 }
