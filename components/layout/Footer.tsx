@@ -77,7 +77,14 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t"
+        <div className="border-t border-white/5 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
+        <p className="font-mono text-[10px] text-[#32324A]">
+          @ 2026 TokenPulse . Alpha . All rights reserved
+        </p>
+        <p className="font-mono text-[10px] text-[#32324A]">
+          token-pulse.in
+        </p>
+        </div>
       </div>
     </footer>
   )
