@@ -70,78 +70,22 @@ export default function Hero() {
                       ⇓ Install to see everything
                     </div>
                     {/* no-api badge */}
-                    <div className='absolute top-3 right-0 z-10 flex items-center gap-1.5 bg-[#0E0E11] border border-[rgba(0,299,160,0.18)] rounded-x1 px-3 shadow-lg'>
-                        <div className='w-1.5 h-1.5 rounded-full bg-[#00E5%A0] shadow-[0_0_5px_rgba(0,299,160,0.5)] animate-pulse'/>
-                        <spam className="font-mono text-[10px] font-semibold text-[#00E5A0] whitespace-nowrap">No API Key required</spam>
-                        </div>
-
-                        {/* Popup */}
+                    <div className='absolute top-3 right-0 z-10 flex item-center gap-1.5 bg-[#0E0E11] border border-[rgba(0,299,160,0.18)] rounded-x1 px-3 py-2 shadow-lg'>
+                        <div className='w-1.5 h-1.5 rounded-full bg-[#00E5A0] shadow-[0_0_5px_rgba(0,299,160,0.5)] animate-pulse'/>
+                        <span className='font-mono text-[10px] font-semibold text-[#00E5A0] whitespace-nowrap'>No API key required</span>
                     </div>
 
-                </div>
-
-            </div>
-        </section>
+                    {/* Popup */}
+                    <PopupMockup />
+                   </div>
+                 </div>
+               </section>
     )
 }
 
 function PopupMockup() {
     return (
-        <div className='w-[300px] bg-[#080808] border border-[#1e1e1e] rounded-2x1 overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0,03),0_24px_64px_rgba(0,0,0,0.75),0_0_40px_rgba(108,95,255,0.07)] hover:-translate-y-1 translate-y-1 transition-transform duration-300' style={{fontFamily:'-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}}>
-        {/* Header */}
-        <div className='flex items-center justify-between px-3.5 pt-3 pb-2.5 border-b border-[#131313]'>
-            <div className='flex items-center gap-2'>
-                <div className='w-5 h-5 rounded-md overflow-hidden border border-[rgba(108,95,255,0.3)]'>
-                    <Image src="https://raw.githubusercontent.com/anu-ship-it/TokenPulse/main/src/icons/icon128.png" alt="" width={20} height={20}/>
-                </div>
-                <span className='text-[12px] font-semibold text-[#c0c0c0]'>TokenPulse</span>
-            </div>
-            <div className='flex items-center gap-1.5'>
-                <div className='w-1.5 h-1.5 rounded-full bg-[#00E5A0] shadow-[0_0_5px_rgba(0,299,160,0.5)] animate-pulse'/>
-                <span className='text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-[rgba(232,137,74,0.15)] text-[#e8894a]'>Claude</span>
-                <span className='text-[12px] text-[#555] px-1'>💡</span>
-                <span className='text-[12px] text-[#555] px-1'>↻</span>
-                <span className='text-[12px] text-[#555] px-1'>⚙</span>
-            </div>
-        </div>
-        {/* Content */}
-        <div className='px-3.5 pt-3 pb-2.5 border-b border-[#0f0f0f]'>
-            <div className='text-[8px] font-bold tracking-widest text-[#888] uppercase mb-2'>Context Window
-            </div>
-            <div className='text-[8px] text-[#aaa] tracking-widest uppercase mb-1'>TOKENS USED</div>
-            <div className="flex items-end justify-between mb-1">
-                <span className="text-[28px] font-black text-[#06b6d4] leading-none tracking-tighter">-10k</span>
-                <span className="text-[10px] text-[#333] pb-1">200k limit</span>
-            </div>
-            <div className="flex justify-between mb-2">
-                <span className='text-[10px] font-semibold text-[#e0e0e0]'>-190k remaining</span>
-                <span className="text-[10px] text-[#888]">5% used</span>
-            </div>
-            <div className="h-[3px] bg-[#333] rounded-full overflow-hidden mb-1">
-                <div className="h-full w-[5%] bg-[#06b6d4] rounded-full"/>
-            </div>
-            <div className="flex justify-between">
-                <span className="text-[8px] text-[#555]">0</span>
-                <span className="text-[8px] font-black tracking-widest text-[#06b6d4]">HEALTHY</span>
-                <span className="text-[8px] text-[#555]">200k</span>
-            </div>
-        </div>
-        {/* Cost */}
-        <div className="px-3.5 pt-3 pb-2.5 border-b border-[#0f0f0f]">
-            <div className='text-[8px] font-bold tracking-widest text-[#888] uppercase mb-2'>Estimated Cost . Sonnet 4</div>
-            <div className='bg-[#0d0d0d] border-[#161616] rounded-lg overflow-hidden'>
-                {[['This conversation','Input tokens only','$0.031'],['Today','Peak usage . all chats','$0.046'],['This week','Last 7 days','$0.114']].map(([name,sub,val]) => (
-                    <div key={name} className='flex items-center justify-between px-3 py-2 border-b border-[#131313] last:border-0'>
-                        <div>
-                            <div className='text-[11px] font-semibold text-[#aaa]'>{name}</div>
-                            <div className='text-[9px] text-[#555]'>{sub}</div>
-                        </div>
-                        <span className='text-[13px] font-black text-[#06b6d4]'>{val}</span>
-                        </div>
-                ))}
-            </div>
-        </div>
-        {/* Rate limits */}
-        
+        <div className='w-[300px] bg-[#080808] border border-[#1e1e1e] rounded-2x1 overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_24px_64px_rgba(0,0,0,0.75),0_0_40px_rgba(108,95,255,0.07)]
+        hover: -translate-y-1 transition-transform duration-300' style={{fontFamily:'-apple-system,'}}
     )
 }
