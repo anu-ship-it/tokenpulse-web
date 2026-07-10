@@ -133,8 +133,23 @@ export default function Pricing() {
         <div className="bg-[#080809] border border-[rgba(245,158,11,0.3)] rounded-2x1 p-7 flex flex-col md:flex-row items-start md:item-center justify-between gap-6 shadow-[0_0_40px_rgba(245,158,11,0.05)]">
           <div className="flex-1">
             <span className="font-mono text-[10px] font-semibold text-[#F59E0B] bg-[rgba(245,158,11,0.08)] border-[rgba(245,158,11,0.2)] px-2 py-0.5 rounded inline-block mb-3">
-              
+              ✦ Early Adopter - Limited to 100 users
             </span>
+            <h3 className='text-[18px] font-bold text-[#EDEEF2] tracking-tight mb-2'>
+              Lifetime Pro access. Pay once, own it forever.
+            </h3>
+            <p className="text-[13px] text-[#72728A] leading-relaxed max-w-[500px]">
+              Lock in Pro features at a single payment before we launch, First 100 users only - after that, this offer disappears permanently. Includes all future Pro features.
+            </p>
+          </div>
+          <div className="flex flex-col items-start md:items-end gap-2 flex-shrink-0">
+            <div className="text-[36px] font-black text-[#F59E0B] tracking-[-0.05em] leading-none">$69</div>
+            <div className="font-mono text-[10px] text-[#3232AA]">one-time . 100 spots total</div>
+          <button
+           onClick={(e) => { e.preventDefault();
+            document.getElementById('wailist')?.scrollIntoView({  behavior: 'smooth' }) }}
+            className='text-[13px] font-bold text'
+           }}
           </div>
         </div>
       </div>
