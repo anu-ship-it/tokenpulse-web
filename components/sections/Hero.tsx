@@ -104,5 +104,70 @@ function PopupMockup() {
                 </div>
             </div>
             {/* Context */}
-            
+            <div className="px-3.5 pt-3 pb-2.5 border-b border-[#0f0f0f]">
+                <div className="text-[8px] font-bold tracking-widest text-[#888] uppercase mb-2">Context Window</div>
+                <div className="text-[8px] text-[#aaa] tracking-widest uppercase mb-1">TOKENS USED</div>
+                <div className="flex items-end justify-between mb-1">
+                    <span className="text-[28px] font-black text-[#06b6d4] leading-none tracking-tighter">~10k</span>
+                    <span className="text-[10px] text-[#333] pb-1">200k limit</span>
+                </div>
+                <div className="flex justify-between mb-2">
+                  <span className="text-[10px] font-semibold text-[#e0e0e0]">~190k remaining</span>
+                  <span className="text-[10px] text-[#888]">5% used</span>  
+                </div>
+                <div className="h-[3px] bg-[#333] rounded-full overflow-hidden mb-1">
+                    <div className="h-full w-[5%] bg-[#06b6d4] rounded-full"/>
+                </div>
+                <div className="flex justify-between">
+                    <span className="text-[8px] text-[#555]">0</span>
+                    <span className="text-[8px] font-black tracking-widest text-[#06b6d4]">HEALTHY</span>
+                    <span className="text-[8px] text-[#555]">200k</span>
+                </div>
+            </div>
+            {/* Cost */}
+            <div className="px-3.5 pt-3 pb-2.5 border-b border-[#0f0f0f]">
+                <div className="text-[8px] font-bold tracking-widest text-[#888] uppercase mb-2">Estimated Cost . Sonnet 4</div>
+                <div className="bg-[#0d0d0d] border border-[#161616] rounded-lg overflow-hidden">
+                    {[['This conversation','Last 7 days','$0.031'],['Today','Peak usagee . all chats','$0.046'],['This week','Last 7 days','0.114']].map(([name,sub,val]) => (
+                        <div key={name} className="flex items-center justify-between px-3 py-2 border-b border-[#131313] last:border-0">
+                            <div>
+                                <div className="text-[11px] font-black text-[#aaa]">{name}</div>
+                                <div className="text-[9px] text-[#555]">{sub}</div>
+                            </div>
+                            <span className="text-[13px font-black text-[#06b6d4]">{val}</span>
+                           </div> 
+                    ))}
+                </div>
+            </div>
+            {/* Rate Limits */}
+            <div className="px-3.5 pt-3 pb-2.5">
+                <div className="text-[8px] font-bold tracking-widest text-[#888] uppercase mb-2">Rate Limits</div>
+                <div className="bg-[#0d0d0d] border border-[#161616] rounded-lg overflow-hidden">
+                    {[['5-Hour Session','-','0%',0],['7-Day Weekly','Resets in 88h 46m','10%',10]].map(([name,sub,pct,w]) => (
+                        <div key={name as string} className="flex items-center justify-between px-3 py-2 border-b border-[#131313] last:border-0">
+                        <div>
+                            <div className="text-[11px] font-semibold text-[#aaa]">{name}</div>
+                            <div className="text-[9px] text-[#555]">{sub}</div>
+                        </div>
+                        <div className="flex flex-col items-end gap-1">
+                            <span className="text-[13px] font-black text-[#06b6d4]">{pct}</span>
+                            <div className="w-[70px] h-[2px] bg-[#2a2a2a] rounded-full overflow-hidden">
+                                <div className="h-full bg-[#06b6d4] rounded-full" style={{width:`${w}%`}}/>
+                            </div>
+                           </div>
+                         </div>               
+                    ))}
+                </div>
+            </div>
+            {/* Footer */}
+            <div className="flex items-center justify-between px-3.5 py-2.5 border-t border-[#131313]">
+                <div className="flex items-center gap-1">
+                    <button className="text-[9px] text-[#4a9ba5]">⭐ review</button>
+                    <span className="text-[9x] text-[#222]">.</span>
+                    <button className="text-[9px] text-[#4a9ba5]">help</button>
+                </div>
+                <button className="text-[9x] font-bold px-3 py-1 rounded-md bg-[rgba(34,197,94,0.08)] text-[#06b6d4] border border-[rgba(34,197,94,0.08)] text-[#06b6d4] border border-[rgba(34,197,94,0.2)]">+ New chat</button>
+            </div>
         </div>
+    ) 
+}
