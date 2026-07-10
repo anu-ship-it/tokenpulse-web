@@ -86,6 +86,23 @@ export default function Hero() {
 function PopupMockup() {
     return (
         <div className='w-[300px] bg-[#080808] border border-[#1e1e1e] rounded-2x1 overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_24px_64px_rgba(0,0,0,0.75),0_0_40px_rgba(108,95,255,0.07)]
-        hover: -translate-y-1 transition-transform duration-300' style={{fontFamily:'-apple-system,'}}
-    )
-}
+        hover: -translate-y-1 transition-transform duration-300' style={{fontFamily:'-apple-system, BlinkMacSystemFont,"Segoe UI",sans-serif'}}>
+            {/* Header */}
+            <div className="flex items-center justify-between px-3.5 pt-3 pb-2.5 border-b border-[#131313]">
+                <div className="flex items-center gap-2">
+                    <div className="w-5 h-5 rounded-md overflow-hidden border border-[rgba(108,95,255,0.3)]">
+                        <Image src="https://raw.githubusercontent.com/anu-ship-it/TokenPulse/main/src/icons/icon128.png" alt="" width={20} height={20}/>
+                    </div>
+                    <span className="text-[12px] font-semibold text-[#c0c0c0]">TokenPulse</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#00E5A0] shadow-[0_0_5px_rgba(0,229,160,0.5)] animate-pulse"/>
+                    <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-[rgba(232,137,74,0.15)] text-[#e8894a]">Claude</span>
+                    <span className="text-[12px] text-[#555] px-1">💡</span>
+                    <span className="text-[12px] text-[#555] px-1">↻</span>
+                    <span className="text-[12px] text-[#555] px-1">⚙︎</span>
+                </div>
+            </div>
+            {/* Context */}
+            
+        </div>
