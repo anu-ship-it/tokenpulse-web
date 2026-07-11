@@ -1,75 +1,55 @@
 'use client'
+import { useState } from "react"
+import Input from '@/components/ui/Input'
+import Button from '@/components/ui/Button'
 
-import { useState } from 'react'
-
-export function Waitlist({ id = 'waitlist' }: { id?: string }) {
+export default function Waitlist() {
   const [email, setEmail] = useState('')
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>
+  ('idle')
+  const [error, setError] = useState('')
 
-  async function submit() {
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setStatus('error')
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (!email || !email.includes('@')) {
+      setEmail('Enter a valid email address.')
       return
     }
+    setError('')
     setStatus('loading')
     try {
       const res = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, plan: 'pro' }),
+        body: JSON.stringify({ email }),
       })
-      setStatus(res.ok ? 'success' : 'error')
-    } catch {
-      setStatus('error')
-    }
+      if (res.ok) {
+        setStatus('success')
+      } else {
+        setStatus('error')
+      }
+        } catch {
+          setStatus('error')
+        }
   }
 
   return (
-    <section id={id} className="relative z-10 border-t border-b border-[var(--b)] bg-[var(--s1)] py-14 px-6">
-      <div className="max-w-6xl mx-auto flex items-center justify-between gap-10 flex-wrap">
-        <div className="max-w-lg">
-          <p className="mono text-[10px] font-semibold tracking-widest uppercase text-[var(--acc)] mb-2">
-            Pro Waitlist · Early Access
-          </p>
-          <h2 className="text-xl font-bold text-[var(--t)] tracking-tight mb-2">
-            Be first. Lock the lowest price.
-          </h2>
-          <p className="text-[13.5px] text-[var(--t2)] leading-relaxed">
+    <section className="relative z-10 border-t border-white/5 bg-[#0E0E11]" id="waitlist">
+      <div className="max-w-7x1 mx-auto px-6 lg:px-12 py-16 flex flex-col md:fleex-row items-start md:items-center justify-between gap-10">
+        <div className="max-w-[520px]">
+          <div className="font-mono text-[10px] font-semibold tracking-[1px] uppercase text-[#6C5FFF] mb-3">
+            Pro waitlist . Early access
+          </div>
+          <p className="text-[14px] text-[#72728A] leading-relaxed">
             Pro is in development. Waitlist members get{' '}
-            <strong className="text-[var(--live)] font-semibold">first access</strong> and the
-            early adopter price locked permanently — even after we raise it at launch.
+            <strong className="text-[#00E5A0] font-semibold">first access</strong>{''}
+            and the early adopter price locked permanently - even after we raise it at launch. Firefox support, 90-day history, predictions, VSCode extension, and more.
           </p>
         </div>
 
-        <div className="flex-shrink-0 w-full sm:w-auto">
+        <div className="flex-shrink-0 w-full md:w-auto">
           {status === 'success' ? (
-            <p className="mono text-sm text-[var(--live)]">
-              ✓ You&apos;re on the list. We&apos;ll email you first when Pro ships.
-            </p>
-          ) : (
-            <div className="flex gap-2 flex-col sm:flex-row">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => { setEmail(e.target.value); setStatus('idle') }}
-                onKeyDown={(e) => e.key === 'Enter' && submit()}
-                placeholder="you@example.com"
-                className="px-4 py-3 rounded-[9px] bg-[var(--s2)] text-[var(--t)] border border-[var(--bm)] outline-none text-[13px] placeholder:text-[var(--t3)] focus:border-[var(--ab)] transition-colors w-full sm:w-60"
-                style={status === 'error' ? { borderColor: 'var(--red)' } : {}}
-              />
-              <button
-                onClick={submit}
-                disabled={status === 'loading'}
-                className="px-5 py-3 rounded-[9px] bg-[var(--acc)] text-white text-[13px] font-semibold hover:bg-[#7D71FF] hover:-translate-y-px transition-all disabled:opacity-60 disabled:cursor-not-allowed whitespace-nowrap"
-              >
-                {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
-              </button>
-            </div>
-          )}
-          {status === 'error' && (
-            <p className="mono text-[11px] text-[var(--red)] mt-2">
-              Enter a valid email to continue.
-            </p>
+            
           )}
         </div>
       </div>
