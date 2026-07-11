@@ -49,7 +49,45 @@ export default function Waitlist() {
 
         <div className="flex-shrink-0 w-full md:w-auto">
           {status === 'success' ? (
-            
+            <div className="flex items-center gap-3 bg-[rgba(0,229,160,0.08)] rounded-x1 px-5 py-4">
+              <div className="w-2 h-2 rounded-full bg-[#00E5A0] shadow-[0_0_6px_rgba(0,229,160,0.5)]"/>
+              <div>
+                <p className="text-[13px] font-semibold text-[#72728A] mt-0.5">We'll email you first when Pro ships.</p>
+              </div>
+             </div>   
+          ): (
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2.5 w-full md:w-auto">
+              <div className="flex flex-col gap-1.5">
+                <Input
+                  id="waitlist-email"
+                  type="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={e => { setEmail(e.target.value); setError('') }}
+                  error={!!error}
+                  className="w-full sm:w-[260px]"
+                  disabled={status === 'loading'}
+                />
+                {error && (
+                  <p className="font-mono text-[10px] text-[#EF4444]">{error}</p>
+                )}
+              </div>
+              <Button
+                type="submit"
+                loading={status === 'loading'}
+                size="md"
+                className="whitespace-nowrap h-[46px]"
+              >
+                Join Waitlist  
+              </Button>  
+            </form>
+          )}
+          {status === 'error' && (
+            <p>
+              Something went wrong. Email us at{' '}
+              <a href="mailto:anup17508@gmail.com"
+              className="underline">anup17508@gmail.com</a>
+            </p>
           )}
         </div>
       </div>
