@@ -1,30 +1,30 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { resend, FROM, REPLY_TO } from '@/lib/resend'
-import { appendRow } from '@/lib/sheets'
+import { NextResponse } from "next/server";
+import { resend, FROM_EMAIL, NOTIFICATION_EMAIL } from '@/lib/resend'
+import { appendToSheet } from "@/lib/sheets";
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
     const { reason, detail } = await req.json()
+    const timestamp = new Date().toISOString()
 
-    await appendRow({
-      sheet: 'Uninstall',
-      values: [reason ?? 'not selected', detail ?? ''],
-    })
+    await appendToSheet('Uninstall', [timestamp, reason || 'not selected', detail || ''])
 
     await resend.emails.send({
-      from: FROM,
-      to: process.env.NOTIFICATION_EMAIL ?? REPLY_TO,
-      subject: `[Uninstall] ${reason ?? 'not selected'}`,
+      from: FROM_EMAIL,
+      to: NOTIFICATION_EMAIL,
+      subject: `TokenPulse unistall feedback: ${reason}`,
       html: `
-        <p><strong>Reason:</strong> ${reason ?? 'not selected'}</p>
-        <p><strong>Detail:</strong> ${detail ?? 'none'}</p>
-        <p style="color:#888;font-size:12px">${new Date().toISOString()}</p>
+        <div style="font-family:monospace;background:#080809;color:#EDEEF2;margin:0 0 16px">Uninstall Feedback</h2>
+        <p><strong>Reason:</strong> ${reason}</p>
+        <p><strong>Detail:</strong> ${detail || 'none'}</p>
+        <p><strong>Time:</strong> ${timestamp}</p>
+       </div>  
       `,
     })
 
     return NextResponse.json({ ok: true })
   } catch (err) {
-    console.error('[uninstall]', err)
-    return NextResponse.json({ error: 'Server error' }, { status: 500 })
+    console.error('Uninstall API error:', err)
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
 }
