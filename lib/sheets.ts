@@ -17,9 +17,9 @@ export async function appendToSheet(tab: string, values: string[]) {
   const auth = getAuth()
   const sheetId = process.env.GOOGLE_SHEET_ID
 
-  // Graceful degrafe - if credentials missing, skip silently
+  // Graceful degrade — if credentials missing, skip silently
   if (!auth || !sheetId) {
-    console.warn('Google Sheets credentials not configured - skipping sheet write')
+    console.warn('Google Sheets credentials not configured — skipping sheet write')
     return
   }
 

@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://token-pulse.in'
 
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'TokenPulse - Never lose your flow to an AI rate limit again',
-    template: '% | TokenPulse'
+    default: 'TokenPulse — Never lose your flow to an AI rate limit again',
+    template: '%s | TokenPulse',
   },
   description:
     'TokenPulse tracks token usage and rate limits across Claude, ChatGPT, Gemini and DeepSeek in real time. Live token bar, smart alerts, cost tracking. Free Chrome extension for developers.',
@@ -27,14 +27,14 @@ export const defaultMetadata: Metadata = {
     locale: 'en_US',
     url: siteUrl,
     siteName: 'TokenPulse',
-    title: 'TokenPulse - Never lose your flow to an AI rate limit again',
+    title: 'TokenPulse — Never lose your flow to an AI rate limit again',
     description:
-      'Live token tracking across Claude, ChatGPT, Gemini and DeepSeek. No API Key. Free Chrome extension for developers.',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'TokenPulse' }],  
+      'Live token tracking across Claude, ChatGPT, Gemini and DeepSeek. No API key. Free Chrome extension for developers.',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'TokenPulse' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TokenPulse - Never lose your flow to an AI rate limit again',
+    title: 'TokenPulse — Never lose your flow to an AI rate limit again',
     description: 'Live token tracking across Claude, ChatGPT, Gemini and DeepSeek. Free Chrome extension.',
     images: ['/og-image.png'],
   },
@@ -42,13 +42,12 @@ export const defaultMetadata: Metadata = {
   alternates: { canonical: siteUrl },
 }
 
-export function pageMetadata(title: string, description: string, path = ''): Metadata
-{
+export function pageMetadata(title: string, description: string, path = ''): Metadata {
   return {
     title,
     description,
     alternates: { canonical: `${siteUrl}${path}` },
     openGraph: { title, description, url: `${siteUrl}${path}` },
-    twitter: { title, description }, 
+    twitter: { title, description },
   }
 }
