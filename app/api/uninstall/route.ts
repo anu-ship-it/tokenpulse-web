@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server'
 import { resend, FROM_EMAIL, NOTIFICATION_EMAIL } from '@/lib/resend'
-import { appendToSheet } from "@/lib/sheets";
+import { appendToSheet } from '@/lib/sheets'
 
 export async function POST(req: Request) {
   try {
@@ -12,13 +12,14 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: NOTIFICATION_EMAIL,
-      subject: `TokenPulse unistall feedback: ${reason}`,
+      subject: `TokenPulse uninstall feedback: ${reason}`,
       html: `
-        <div style="font-family:monospace;background:#080809;color:#EDEEF2;margin:0 0 16px">Uninstall Feedback</h2>
-        <p><strong>Reason:</strong> ${reason}</p>
-        <p><strong>Detail:</strong> ${detail || 'none'}</p>
-        <p><strong>Time:</strong> ${timestamp}</p>
-       </div>  
+        <div style="font-family:monospace;background:#080809;color:#EDEEF2;padding:24px;border-radius:12px">
+          <h2 style="color:#EF4444;margin:0 0 16px">Uninstall Feedback</h2>
+          <p><strong>Reason:</strong> ${reason}</p>
+          <p><strong>Detail:</strong> ${detail || 'none'}</p>
+          <p><strong>Time:</strong> ${timestamp}</p>
+        </div>
       `,
     })
 
