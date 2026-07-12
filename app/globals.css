@@ -8,7 +8,9 @@
     --acc: #6C5FFF;
   }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
     background: #080809;
@@ -25,21 +27,42 @@
 }
 
 @layer utilities {
-  .text-live { color: #00E5A0; }
-  .text-acc { color: #6C5FFF; }
-  .bg-live-dim { background: rgba(0, 229, 160, 0.08); }
-  .bg-acc-dim { background: rgba(108, 95, 255, 0.10); }
-  .border-live { border-color: rgba(0, 229, 160, 0.18); }
-  .border-acc { border-color: rgba(108, 95, 255, 0.22); }
+  .text-live {
+    color: #00E5A0;
+  }
+
+  .text-acc {
+    color: #6C5FFF;
+  }
+
+  .bg-live-dim {
+    background: rgba(0, 229, 160, 0.08);
+  }
+
+  .bg-acc-dim {
+    background: rgba(108, 95, 255, 0.10);
+  }
+
+  .border-live {
+    border-color: rgba(0, 229, 160, 0.18);
+  }
+
+  .border-acc {
+    border-color: rgba(108, 95, 255, 0.22);
+  }
 
   .gradient-heading {
-    background: linear-gradient(135deg, #EDEEF2 0%, #7A7ABC 100%);
+    background: linear-gradient(135deg, #EDEEF2 0%, #7A7A8C 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .ambient-glow {
-    position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
   }
 }
