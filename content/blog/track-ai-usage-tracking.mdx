@@ -1,0 +1,88 @@
+---
+title: "How to Track AI Usage Across Claude, ChatGPT, Gemini and DeepSeek"
+description: "Most developers use 3-4 AI tools daily with no visibility into total token consumption or cost. Here's how to get a single view across all of them."
+date: "2026-06-18"
+tags: ["ai usage", "developer tools", "cost tracking"]
+published: true
+---
+
+The average developer in 2026 uses multiple AI tools in a single workday: Claude for deep reasoning, ChatGPT for quick lookups, Gemini for long-document work, Cursor or Copilot for in-editor completions. Each tool has its own context window, its own rate limits, and its own cost structure. None of them talk to each other.
+
+The result is that most developers have no idea what they actually spend on AI, which tools they use most, or where they're close to hitting a limit.
+
+## The multi-tool problem
+
+When you work across AI tools, you lose visibility in several ways:
+
+**No unified cost view.** ChatGPT Pro is $20/month flat. Claude Pro is $20/month. Gemini Advanced is $20/month. But API usage through Cursor, Copilot, or direct API calls adds variable costs on top. Most developers could not tell you their actual monthly AI spend within $50.
+
+**No cross-tool rate limit awareness.** Claude's 5-hour window doesn't know you've been hammering ChatGPT for the last two hours. You might switch to Claude at 80% capacity without realizing it.
+
+**No usage pattern visibility.** Which tool do you actually reach for debugging vs architecture vs writing? Most developers assume they know, but the data often surprises them.
+
+## What you actually need
+
+A cross-platform tracker needs to work at the browser level — not through APIs — because:
+
+1. Not all tools expose usage APIs (ChatGPT doesn't)
+2. API keys add setup friction and security surface area
+3. Browser session data is already present and requires no additional auth
+
+The approach: a browser extension that reads each AI tool's DOM and session data independently, aggregates locally, and shows you a unified view.
+
+## How TokenPulse approaches multi-tool tracking
+
+[TokenPulse](https://token-pulse.in) runs a content script on each supported domain. Each script reads the relevant data for that platform:
+
+- **Claude**: reads the internal usage API for rate limits + estimates context from DOM
+- **ChatGPT**: estimates context window from conversation DOM
+- **Gemini**: estimates context from DOM
+- **DeepSeek**: estimates context from DOM
+
+All data aggregates to the popup, which shows a per-platform breakdown. Click the icon and you can see what's happening across all four tools in a single view.
+
+## Reading the cost data
+
+TokenPulse estimates cost based on the model you're using and the token consumption estimated from the conversation. The accuracy is ±8% — sufficient for understanding your spend pattern, not for billing precision.
+
+The cost view shows:
+- This conversation's estimated cost
+- Today's estimated spend across all sessions on that platform
+- This week's estimated spend
+
+For developers on flat subscription plans (Claude Pro, ChatGPT Plus), the dollar amounts are less relevant than the utilization percentages. For developers with API access or on usage-based plans, the cost tracking directly maps to real spend.
+
+## Building a habit around usage monitoring
+
+The goal isn't to obsess over token counts — it's to build a passive awareness that changes behavior at the margins.
+
+Developers who see the token bar tend to:
+- Start new conversations more deliberately instead of letting threads run indefinitely
+- Paste smaller, more targeted code snippets rather than entire files
+- Check the bar before starting a long session to know if they have headroom
+- Notice patterns in which sessions burn the most context
+
+None of this requires active monitoring. The bar is there, you glance at it the way you glance at your battery indicator, and you make better decisions without thinking about it.
+
+## The future: unified AI usage timeline
+
+The missing piece right now is a cross-tool timeline — a single view showing every AI interaction across all tools in chronological order, with token counts, costs, and outcomes.
+
+Imagine opening a dashboard and seeing:
+
+```
+9:14am   Claude     12K tokens    Debugging auth flow
+10:31am  ChatGPT    4K tokens     Quick regex question
+12:42am  Gemini     8K tokens     Document review
+3:17pm   Cursor     Generated 4 files
+```
+
+This doesn't exist yet. It's on the TokenPulse roadmap as the AI usage timeline feature, coming with Pro. If this is something you want, [join the waitlist](https://token-pulse.in/#waitlist).
+
+## Summary
+
+- Most developers use 3-4 AI tools daily with no unified visibility
+- Browser extensions are the right approach because they don't require API keys
+- Token tracking at the browser level works across Claude, ChatGPT, Gemini, and DeepSeek
+- Passive awareness from a live bar changes usage behavior without active effort
+- Cross-tool cost tracking helps you understand your real monthly AI spend
