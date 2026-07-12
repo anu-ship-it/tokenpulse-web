@@ -10,6 +10,7 @@ import Roadmap from "@/components/sections/Roadmap";
 import Waitlist from "@/components/sections/Waitlist";
 import About from "@/components/sections/About";
 import Button from "@/components/ui/Button";
+import { Analytics } from "@vercel/analytics/next"
 
 const STORE_URL =
   "https://chromewebstore.google.com/detail/tokenpulse-%E2%80%94-chatgpt-clau/oimclhdbljodjkankcnalklchfcehhic";
@@ -28,6 +29,7 @@ export default function Home() {
         <Roadmap />
         <Waitlist />
         <About />
+        <Analytics />
 
         {/* Final CTA */}
         <section className="relative z-10 py-32 border-t border-white/5 bg-[#0E0E11] text-center overflow-hidden">
