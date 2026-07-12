@@ -79,13 +79,13 @@ export default function SupportPage() {
               >
                 <div>
                   <label className="font-mono text-[10px] font-semibold uppercase tracking-widest text-[#32324A] block mb-2">
-                    Your email {optional}
+                    Your email (optional)
                   </label>
                   <Input
                     type="email"
                     placeholder="you@example.com"
                     value={form.email}
-                    onChange={(e) =>
+                    onChange={e =>
                       setForm((f) => ({ ...f, email: e.target.value }))
                     }
                     error={!!errors.email}
