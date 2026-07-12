@@ -4,7 +4,7 @@ import Hero from "@/components/sections/Hero";
 import Problem from "@/components/sections/Problem";
 import HowItWorks from "@/components/sections/HowItWorks";
 import Features from "@/components/sections/Features";
-import Platforms from "@/components/sections/Platforms";
+import Platforms from "@/components/sections/Platform";
 import Pricing from "@/components/sections/Pricing";
 import Roadmap from "@/components/sections/Roadmap";
 import Waitlist from "@/components/sections/Waitlist";
