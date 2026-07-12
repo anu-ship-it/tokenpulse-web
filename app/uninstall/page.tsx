@@ -1,14 +1,13 @@
 "use client";
 import { useState } from "react";
-import Nav from "@/components/layout/Footer";
+import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import Button from "@/components/ui/Button";
 
 const STORE_URL =
-  "https://chromewebstore.google.com/detail/tokenpulse-%E2%80%94-chatgpt-clau/oimclhdbljodjklchfcehhic";
-
+  "https://chromewebstore.google.com/detail/tokenpulse-%E2%80%94-chatgpt-clau/oimclhdbljodjkankcnalklchfcehhic";
 const reasons = [
-  "Didn\'t work on my platform",
+  "Didn't work on my platform",
   "Too many notifications",
   "Missing a feature I need",
   "Found a better option",
@@ -48,7 +47,7 @@ export default function UninstallPage() {
           <div className="w-full max-w-[460px]">
             {status === "success" ? (
               <div>
-                <div className="w-12 h-12 rounded-x1 bg-[rgba(0,229,160,0.08)] border border-[rgba(0,229,160,0.18)] flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-xl bg-[rgba(0,229,160,0.08)] border border-[rgba(0,229,160,0.18)] flex items-center justify-center mb-6">
                   <div className="w-2.5 h-2.5 rounded-full bg-[#00E5A0]" />
                 </div>
                 <h2 className="text-[26px] font-bold tracking-tight mb-3">
@@ -56,10 +55,10 @@ export default function UninstallPage() {
                 </h2>
                 <p className="text-[14px] text-[#72728A] leading-relaxed mb-7">
                   We read every response and use it to decide what to build
-                  next. If you ever want to come back, we'll be here.
+                  next. If you ever want to come back, we will be here.
                 </p>
                 <Button href={STORE_URL} external variant="secondary">
-                  ↗ Reinstall TokenPulse
+                  Reinstall TokenPulse
                 </Button>
               </div>
             ) : (
@@ -71,28 +70,32 @@ export default function UninstallPage() {
                   </span>
                 </div>
                 <h1 className="text-[clamp(28px,4vw,38px)] font-bold tracking-[-0.04em] mb-3">
-                  Sorry to see you
+                  Sorry to see you{" "}
                   <em className="not-italic text-[#00E5A0]">go.</em>
                 </h1>
                 <p className="text-[14px] text-[#72728A] leading-relaxed mb-8">
-                  Ten seconds of your time helps us what is actually broken.
+                  Ten seconds of your time helps us fix what is actually broken.
                 </p>
-                <div className="font-mono text-[10px] font-semibold uppercase tracking-widest text-[#625FFF] mb-3">
+                <div className="font-mono text-[10px] font-semibold uppercase tracking-widest text-[#6C5FFF] mb-3">
                   Why did you uninstall?
                 </div>
                 <div className="flex flex-col gap-2 mb-6">
                   {reasons.map((r) => (
-                    <Button
+                    <button
                       key={r}
                       onClick={() => setSelected(r)}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-x1 border text-left transition-all ${
+                      className={`flex items-center gap-3 px-4 py-3 rounded-xl border text-left transition-all ${
                         selected === r
                           ? "border-[rgba(108,95,255,0.4)] bg-[rgba(108,95,255,0.08)]"
                           : "border-white/8 bg-[#0E0E11] hover:border-white/12"
                       }`}
                     >
                       <div
-                        className={`w-3.5 h-3.5 rounded-full border-[1.5px] flex-shrink-0 flex items-center justify-center transition-all ${selected === r ? "border-[#6C5FFF] bg-[#6C5FFF]" : "border-[#32324A]"}`}
+                        className={`w-3.5 h-3.5 rounded-full border-[1.5px] flex-shrink-0 flex items-center justify-center transition-all ${
+                          selected === r
+                            ? "border-[#6C5FFF] bg-[#6C5FFF]"
+                            : "border-[#32324A]"
+                        }`}
                       >
                         {selected === r && (
                           <div className="w-1.5 h-1.5 rounded-full bg-white" />
@@ -103,7 +106,7 @@ export default function UninstallPage() {
                       >
                         {r}
                       </span>
-                    </Button>
+                    </button>
                   ))}
                 </div>
                 <div className="font-mono text-[10px] font-semibold uppercase tracking-widest text-[#32324A] mb-2">
@@ -131,7 +134,7 @@ export default function UninstallPage() {
                     variant="secondary"
                     size="lg"
                   >
-                    ↗ Reinstall
+                    Reinstall
                   </Button>
                 </div>
                 {status === "error" && (
