@@ -1,6 +1,6 @@
-import type { NextConfig } from 'next'
+/** @type {import('next').NextConfig} */ 
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   images: {
     domains: ['raw.githubusercontent.com'],
