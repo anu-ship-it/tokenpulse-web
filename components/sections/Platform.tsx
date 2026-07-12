@@ -1,5 +1,3 @@
-import { features } from "node:process";
-
 const platforms = [
   {
     name: "Claude",
@@ -21,7 +19,7 @@ const platforms = [
       { label: "Live token bar", live: true },
       { label: "Context window %", live: true },
       { label: "Rate limits", live: false },
-      { label: "Reset countdowns", live: true },
+      { label: "Reset countdowns", live: false },
       { label: "Smart notifications", live: true },
       { label: "Cost tracking", live: true },
       { label: "Daily history", live: true },
@@ -62,17 +60,17 @@ const platforms = [
 export default function Platforms() {
   return (
     <section
-      className="relative z-10 py-24 border-t borber-white/5"
+      className="relative z-10 py-24 border-t border-white/5"
       id="platforms"
     >
-      <div className="max-w-7x1 mx-auto px-6 lg:px-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="font-mono text-[11px] font-semibold tracking-[1px] uppercase text-[#6C5FFF] mb-4">
           Platform support
         </div>
         <h2 className="text-[clamp(28px,3.5vw,44px)] font-bold leading-[1.1] tracking-[-0.04em] mb-4">
           Four platforms today.
           <br />
-          <em className="not-italic text-[#000EA0]">More on the way.</em>
+          <em className="not-italic text-[#00E5A0]">More on the way.</em>
         </h2>
         <p className="text-[15px] text-[#72728A] leading-relaxed max-w-[480px] mb-14">
           Claude gets the deepest integration because it exposes rate limit
@@ -83,11 +81,11 @@ export default function Platforms() {
           {platforms.map((p) => (
             <div
               key={p.name}
-              className="bg-[#0E0E11] border border-white/8 rounded-2x1 p-6 flex flex-col gap-4"
+              className="bg-[#0E0E11] border border-white/8 rounded-2xl p-6 flex flex-col gap-4"
             >
               <div className="flex items-center gap-2.5">
                 <div className="w-2 h-2 rounded-full bg-[#00E5A0] shadow-[0_0_5px_rgba(0,229,160,0.4)]" />
-                <span className="text-[14px]font-bold text-[#EDEEF2] tracking-tight">
+                <span className="text-[14px] font-bold text-[#EDEEF2] tracking-tight">
                   {p.name}
                 </span>
               </div>
@@ -100,7 +98,7 @@ export default function Platforms() {
                     <span
                       className={f.live ? "text-[#00E5A0]" : "text-[#32324A]"}
                     >
-                      {f.live ? "✓" : "-"}
+                      {f.live ? "✓" : "—"}
                     </span>
                     <span
                       className={f.live ? "text-[#72728A]" : "text-[#32324A]"}
@@ -118,7 +116,7 @@ export default function Platforms() {
                   />
                 </div>
                 {p.note && (
-                  <p className="font-mono text-[10px] text-[10px] text-[#6C5FFF] mt-2">
+                  <p className="font-mono text-[10px] text-[#6C5FFF] mt-2">
                     {p.note}
                   </p>
                 )}
