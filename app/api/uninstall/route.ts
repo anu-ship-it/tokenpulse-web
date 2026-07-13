@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getResend, FROM_EMAIL, NOTIFICATION_EMAIL } from '@/lib/resend'
+import { resend, FROM_EMAIL, NOTIFICATION_EMAIL } from '@/lib/resend'
 import { appendToSheet } from '@/lib/sheets'
 
 export const dynamic = 'force-dynamic'
@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 
     await appendToSheet('Uninstall', [timestamp, reason || 'not selected', detail || ''])
 
-    await getResend().emails.send({
+    await resend.emails.send({
       from: FROM_EMAIL,
       to: NOTIFICATION_EMAIL,
       subject: `TokenPulse uninstall feedback: ${reason}`,

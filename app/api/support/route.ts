@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getResend, FROM_EMAIL, NOTIFICATION_EMAIL } from '@/lib/resend'
+import { resend, FROM_EMAIL, NOTIFICATION_EMAIL } from '@/lib/resend'
 import { appendToSheet } from '@/lib/sheets'
 
 export const dynamic = 'force-dynamic'
@@ -16,7 +16,7 @@ export async function POST(req: Request) {
 
     await appendToSheet('Support', [timestamp, email || 'not provided', type, message])
 
-    await getResend().emails.send({
+    await resend.emails.send({
       from: FROM_EMAIL,
       to: NOTIFICATION_EMAIL,
       subject: `TokenPulse support: ${type} from ${email || 'anonymous'}`,
@@ -33,7 +33,7 @@ export async function POST(req: Request) {
     })
 
     if (email && email.includes('@')) {
-      await getResend().emails.send({
+      await resend.emails.send({
         from: FROM_EMAIL,
         to: email,
         subject: 'We got your message — TokenPulse Support',
