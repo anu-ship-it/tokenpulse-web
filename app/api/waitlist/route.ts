@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { resend, FROM_EMAIL, NOTIFICATION_EMAIL } from '@/lib/resend'
+import { getResend, FROM_EMAIL, NOTIFICATION_EMAIL } from '@/lib/resend'
 import { appendToSheet } from '@/lib/sheets'
 
 export const dynamic = 'force-dynamic'
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
     await appendToSheet('Waitlist', [timestamp, email, source])
 
     // 2. Notify us
-    await resend.emails.send({
+    await getResend().emails.send({
       from: FROM_EMAIL,
       to: NOTIFICATION_EMAIL,
       subject: `New Pro waitlist signup: ${email}`,
@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     })
 
     // 3. Confirm to user
-    await resend.emails.send({
+    await getResend().emails.send({
       from: FROM_EMAIL,
       to: email,
       subject: "You're on the TokenPulse Pro waitlist",
