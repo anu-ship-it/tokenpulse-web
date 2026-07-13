@@ -1,5 +1,4 @@
-'use client'
-import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { MDXRemote } from 'next-mdx-remote/rsc'
 
 const components = {
   h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -24,7 +23,7 @@ const components = {
     <ol className="list-decimal list-inside space-y-2 mb-6 text-[#72728A] text-[15px]" {...props}/>
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className="flex items-start gap-2 text-[15px] text-[#72728A] leading-relaxed before:content-['→'] before:text-[#6C5FFF] before:flex-shrink-0 before:mt-0.5" {...props}/>
+    <li className="flex items-start gap-2 text-[15px] text-[#72728A] leading-relaxed" {...props}/>
   ),
   code: (props: React.HTMLAttributes<HTMLElement>) => (
     <code className="font-mono text-[13px] text-[#00E5A0] bg-[rgba(0,229,160,0.08)] border border-[rgba(0,229,160,0.18)] px-1.5 py-0.5 rounded" {...props}/>
@@ -41,6 +40,6 @@ const components = {
   ),
 }
 
-export default function MDXContent({ source }: { source: MDXRemoteSerializeResult }) {
-  return <MDXRemote {...source} components={components}/>
+export default function MDXContent({ source }: { source: string }) {
+  return <MDXRemote source={source} components={components}/>
 }
