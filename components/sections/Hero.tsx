@@ -14,7 +14,7 @@ export default function Hero() {
         <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full border border-[rgba(108,95,255,0.03)]" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full py-20 flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full py-20 flex flex-col lg:flex-row items-center gap-16 lg:gap-16">
         {/* Left */}
         <div className="flex-1 max-w-[580px]">
           {/* Eyebrow */}
@@ -73,7 +73,7 @@ export default function Hero() {
         </div>
 
         {/* Right — popup mockup cropped */}
-        <div className="flex-shrink-0 relative h-[460px] overflow-hidden">
+        <div className="flex-shrink-0 relative h-[460px] overflow-hidden lg:translate-x-9">
           {/* fade */}
           <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#080809] to-transparent z-20 pointer-events-none" />
           {/* hint */}
