@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server'
 import { resend, FROM_EMAIL, NOTIFICATION_EMAIL } from '@/lib/resend'
 import { appendToSheet } from '@/lib/sheets'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(req: Request) {
   try {
     const { email, type, message } = await req.json()
