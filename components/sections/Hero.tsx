@@ -56,19 +56,28 @@ export default function Hero() {
 
           {/* Platform pills */}
           <div className="flex flex-wrap gap-2">
-            {["Claude", "ChatGPT", "Gemini", "DeepSeek", "+ more coming"].map(
-              (p) => (
-                <div
-                  key={p}
-                  className="flex items-center gap-1.5 bg-[#0E0E11] border border-white/8 rounded-full px-3.5 py-1.5"
-                >
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#00E5A0] shadow-[0_0_4px_rgba(0,229,160,0.5)]" />
-                  <span className="font-mono text-[11px] font-semibold text-[#72728A]">
-                    {p}
-                  </span>
-                </div>
-              ),
-            )}
+            {[
+              { label: "Claude", href: "https://claude.ai" },
+              { label: "ChatGPT", href: "https://chatgpt.com" },
+              { label: "Gemini", href: "https://gemini.google.com" },
+              { label: "DeepSeek", href: "https://chat.deepseek.com" },
+              { label: "+ more coming", href: "/#roadmap" },
+            ].map((p) => (
+              <a
+                key={p.label}
+                href={p.href}
+                target={p.href.startsWith("http") ? "_blank" : undefined}
+                rel={
+                  p.href.startsWith("http") ? "noopener noreferrer" : undefined
+                }
+                className="flex items-center gap-1.5 bg-[#0E0E11] border border-white/8 rounded-full px-3.5 py-1.5 hover:border-[rgba(108,95,255,0.3)] hover:bg-[#141418] transition-all group"
+              >
+                <div className="w-1.5 h-1.5 rounded-full bg-[#00E5A0] shadow-[0_0_4px_rgba(0,229,160,0.5)]" />
+                <span className="font-mono text-[11px] font-semibold text-[#72728A] group-hover:text-[#EDEEF2] transition-colors">
+                  {p.label}
+                </span>
+              </a>
+            ))}
           </div>
         </div>
 
