@@ -1,8 +1,20 @@
-import type { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
+
+const BASE = "https://token-pulse.in";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [{ userAgent: '*', allow: '/', disallow: '/api/' }],
-    sitemap: 'https://token-pulse.in/sitemap.xml',
-  }
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: [
+          "/api/",
+          "/_next/",
+        ],
+      },
+    ],
+    sitemap: `${BASE}/sitemap.xml`,
+    host: BASE,
+  };
 }
