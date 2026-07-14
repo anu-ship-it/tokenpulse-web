@@ -64,10 +64,10 @@ export default function Waitlist() {
               <div className="w-2 h-2 rounded-full bg-[#00E5A0] shadow-[0_0_6px_rgba(0,229,160,0.5)]" />
               <div>
                 <p className="text-[13px] font-semibold text-[#00E5A0]">
-                  You're on the list.
+                  You&apos;re on the list.
                 </p>
                 <p className="font-mono text-[10px] text-[#72728A] mt-0.5">
-                  We'll email you first when Pro ships.
+                  We&apos;ll email you first when Pro ships.
                 </p>
               </div>
             </div>

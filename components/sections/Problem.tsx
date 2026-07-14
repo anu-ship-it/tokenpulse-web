@@ -29,7 +29,7 @@ export default function Problem() {
           <em className="not-italic text-[#00E5A0]">kill developer flow.</em>
         </h2>
         <p className="text-[15px] text-[#72728A] leading-relaxed max-w-[480px] mb-14">
-          You don't know you're about to hit a limit until you're already in the
+          You don&apos;t know you&apos;re about to hit a limit until you&apos;re already in the
           middle of something that matters.
         </p>
 

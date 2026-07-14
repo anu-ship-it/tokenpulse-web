@@ -67,7 +67,7 @@ export default function Roadmap() {
           <em className="not-italic text-[#00E5A0]">is going.</em>
         </h2>
         <p className="text-[15px] text-[#72728A] leading-relaxed max-w-[480px] mb-14">
-          The Chrome extension is live. Everything else ships with Pro. Here's
+          The Chrome extension is live. Everything else ships with Pro. Here&apos;s
           the exact sequence.
         </p>
 

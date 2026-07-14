@@ -25,7 +25,7 @@ export default function About() {
               </p>
               <p>
                 We built the tracker we wished existed — one that reads real
-                rate limit data directly from Claude's API, works across every
+                rate limit data directly from Claude&apos;s API, works across every
                 AI tool without requiring a single API key, and stays completely
                 out of the way until you need it.
               </p>
