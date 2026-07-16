@@ -109,8 +109,8 @@ export default function Waitlist() {
           {status === "error" && (
             <p className="font-mono text-[10px] text-[#EF4444] mt-2">
               Something went wrong. Email us at{" "}
-              <a href="mailto:support@token-pulse.in" className="underline">
-                support@token-pulse.in
+              <a href="mailto:tokenpulse10@gmail.com" className="underline">
+                tokenpulse10@gmail.com
               </a>
             </p>
           )}
