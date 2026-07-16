@@ -58,10 +58,10 @@ export default function ContactPage() {
                 Contact
               </div>
               <h1 className="text-[clamp(32px,4vw,48px)] font-bold tracking-[-0.05em] leading-[1.07] mb-5">
-                Let's <em className="not-italic text-[#00E5A0]">talk.</em>
+                Let&aposs;s <em className="not-italic text-[#00E5A0]">talk.</em>
               </h1>
               <p className="text-[15px] text-[#72728A] leading-relaxed mb-10">
-                Whether it's a bug, a feature idea, a Pro question, or something else — we read every message and reply within 24 hours.
+                Whether it&aposs;s a bug, a feature idea, a Pro question, or something else — we read every message and reply within 24 hours.
               </p>
 
               {/* Contact methods */}
