@@ -1,119 +1,141 @@
-const STORE_URL =
-  "https://chromewebstore.google.com/detail/tokenpulse-%E2%80%94-chatgpt-clau/oimclhdbljodjkankcnalklchfcehhic";
+import Nav from '@/components/layout/Nav'
+import Footer from '@/components/layout/Footer'
+import { pageMetadata } from '@/lib/metadata'
 
-const freeFeatures = [
-  "Live token bar — Claude & ChatGPT",
-  "Context window tracking",
-  "Claude rate limits (5hr + 7day)",
-  "Cost estimator",
-  "Daily usage history (60 days)",
-  "Smart threshold notifications",
-  "Token saving tips",
-];
+export const metadata = pageMetadata(
+  'Privacy Policy — TokenPulse',
+  'TokenPulse Privacy Policy. We collect no personal data. All usage data stays on your device.',
+  '/privacy'
+)
 
-const proFeatures = [
-  "Everything in Free",
-  "Cross-device usage sync",
-  "Usage history export (CSV)",
-  "Weekly email summary",
-  "Gemini support",
-  "Response-ready notifications",
-  "Team usage dashboard",
-];
+const sections = [
+  {
+    title: 'The short version',
+    highlight: true,
+    body: `TokenPulse does not collect, store, or transmit your personal data. Everything stays on your device. We do not read your conversations. We do not track your browsing. We do not sell data. The only data that ever leaves your device is what you voluntarily submit through our contact or waitlist forms.`,
+  },
+  {
+    title: 'What data the extension collects',
+    highlight: false,
+    body: `The TokenPulse Chrome extension reads token usage statistics from AI platforms you are already signed into. This includes estimated token counts, context window utilization percentages, and rate limit data from Claude's internal API. This data is stored locally in your browser using Chrome's storage API. It never leaves your device. It is not sent to any TokenPulse server.`,
+  },
+  {
+    title: 'What data the extension does NOT collect',
+    highlight: false,
+    body: `TokenPulse does not read the content of your conversations. It does not collect your name, email address, or any personally identifiable information. It does not track which websites you visit. It does not record keystrokes or form inputs. It does not take screenshots. It does not share any data with third parties.`,
+  },
+  {
+    title: 'Permissions we request and why',
+    highlight: false,
+    body: `Storage: to save your usage history and settings locally on your device.\n\nAlarms: to poll Claude's usage endpoint on a configurable interval (default: every 5 minutes) so the rate limit data stays current.\n\nHost permissions for claude.ai, chatgpt.com, gemini.google.com, chat.deepseek.com: to inject the live token bar above the input box and read session usage data. We access only the usage data — not your conversation content.\n\nTabs: to open new tabs when you click platform links in the extension popup.`,
+  },
+  {
+    title: 'Website analytics',
+    highlight: false,
+    body: `token-pulse.in uses Vercel's built-in analytics, which collects anonymised page view data (page URL, referrer, country, device type). No cookies are set. No personally identifiable information is collected. This data is used solely to understand which pages are visited and is not shared with third parties.`,
+  },
+  {
+    title: 'Waitlist and contact forms',
+    highlight: false,
+    body: `When you submit your email address via the Pro waitlist form or contact form, we store your email address and the content of your submission. This data is used only to contact you about TokenPulse Pro launch, respond to your message, and send product updates you have opted into. We do not sell, rent, or share this data with third parties. You can request deletion of your data at any time by emailing support@token-pulse.in.`,
+  },
+  {
+    title: 'Email communications',
+    highlight: false,
+    body: `If you join the Pro waitlist, you will receive a confirmation email and a notification when Pro launches. You may receive occasional product updates. You can unsubscribe from any email by replying with "unsubscribe" or emailing support@token-pulse.in.`,
+  },
+  {
+    title: 'Third-party services',
+    highlight: false,
+    body: `We use Resend to send transactional emails. Resend processes email addresses solely for the purpose of delivering emails on our behalf. We use Google Sheets as a backend store for waitlist submissions. Both services are bound by their own privacy policies and do not use your data for advertising or third-party purposes.`,
+  },
+  {
+    title: 'Data retention',
+    highlight: false,
+    body: `Local extension data (usage history, settings) is stored in your browser indefinitely until you uninstall the extension or clear browser data. Waitlist and contact form submissions are retained until you request deletion. You can request deletion at any time by emailing support@token-pulse.in.`,
+  },
+  {
+    title: 'Your rights',
+    highlight: false,
+    body: `You have the right to access, correct, or delete any personal data we hold about you. Since the extension stores all data locally on your device, you control that data directly through your browser settings. For data submitted through our website forms (waitlist, contact), email support@token-pulse.in and we will respond within 30 days.`,
+  },
+  {
+    title: 'Children',
+    highlight: false,
+    body: `TokenPulse is not directed at children under 13. We do not knowingly collect personal information from children. If you believe a child has submitted personal information, contact us at support@token-pulse.in and we will delete it promptly.`,
+  },
+  {
+    title: 'Changes to this policy',
+    highlight: false,
+    body: `We may update this Privacy Policy as the product evolves. We will update the effective date below when we do. Continued use of TokenPulse after changes constitutes acceptance of the updated policy. For significant changes, we will notify waitlist members by email.`,
+  },
+  {
+    title: 'Contact',
+    highlight: false,
+    body: `Questions about this Privacy Policy? Email support@token-pulse.in or visit token-pulse.in/contact. We will respond within 30 days.`,
+  },
+]
 
-export default function PricingPage() {
+export default function PrivacyPage() {
   return (
-    <section className="pt-36 pb-24">
-      <div className="max-w-[1100px] mx-auto">
-        <div className="text-center mb-16">
-          <div className="text-[10px] font-bold tracking-[0.14em] text-teal uppercase mb-3">
-            Pricing
-          </div>
-          <h1 className="text-[32px] md:text-[44px] font-extrabold leading-tight tracking-tight mb-4">
-            Free today.
-            <br />
-            <span className="text-teal">Honest about tomorrow.</span>
-          </h1>
-          <p className="text-[15px] text-[#8aa8ac] max-w-[480px] mx-auto leading-relaxed">
-            TokenPulse is free right now. A Pro tier is on the roadmap — not
-            live yet, and we won&apos;t pretend it is.
-          </p>
+    <>
+      <Nav />
+      <main className="relative min-h-screen">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-[-300px] left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,rgba(108,95,255,0.04)_0%,transparent_60%)]"/>
         </div>
+        <div className="relative z-10 max-w-[720px] mx-auto px-6 pt-32 pb-24">
 
-        <div className="grid md:grid-cols-2 gap-5 max-w-[760px] mx-auto mb-16">
-          {/* Free */}
-          <div className="bg-bg2 border border-teal/30 rounded-2xl p-8 relative shadow-[0_8px_32px_rgba(6,182,212,0.08)]">
-            <div className="absolute -top-3.5 left-8">
-              <span className="text-[10px] font-bold tracking-wide px-3 py-1.5 rounded-full bg-teal text-bg shadow-[0_4px_12px_rgba(6,182,212,0.3)]">
-                AVAILABLE NOW
-              </span>
+          {/* Header */}
+          <div className="mb-12">
+            <div className="font-mono text-[11px] font-semibold tracking-[1px] uppercase text-[#6C5FFF] mb-4">
+              Legal
             </div>
-            <div className="text-sm font-bold text-teal mb-2 mt-2">Free</div>
-            <div className="flex items-baseline gap-1.5 mb-8">
-              <span className="text-5xl font-extrabold">$0</span>
-              <span className="text-sm text-text-muted">/ forever</span>
-            </div>
-            <div className="flex flex-col gap-3.5 mb-8">
-              {freeFeatures.map((f) => (
-                <div key={f} className="flex items-center gap-3">
-                  <span className="text-teal font-bold flex-shrink-0">✓</span>
-                  <span className="text-[13px] text-[#8aa8ac]">{f}</span>
+            <h1 className="text-[clamp(32px,4vw,48px)] font-bold tracking-[-0.05em] leading-[1.07] text-[#EDEEF2] mb-4">
+              Privacy Policy
+            </h1>
+            <p className="text-[14px] text-[#72728A] leading-relaxed">
+              Last updated: July 2026
+            </p>
+          </div>
+
+          {/* Privacy badge */}
+          <div className="flex flex-wrap gap-3 mb-10">
+            {[
+              '✓ No personal data collected by extension',
+              '✓ No conversation content read',
+              '✓ No third-party data sharing',
+              '✓ All local storage',
+            ].map(item => (
+              <div key={item} className="flex items-center gap-2 bg-[rgba(0,229,160,0.06)] border border-[rgba(0,229,160,0.15)] rounded-lg px-3 py-1.5">
+                <span className="font-mono text-[11px] font-semibold text-[#00E5A0]">{item}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Sections */}
+          <div className="flex flex-col gap-10">
+            {sections.map((section, i) => (
+              <div
+                key={i}
+                className={`pb-10 border-b border-white/5 last:border-0 ${
+                  section.highlight
+                    ? 'bg-[rgba(108,95,255,0.04)] border border-[rgba(108,95,255,0.12)] rounded-xl p-6 -mx-6'
+                    : ''
+                }`}
+              >
+                <h2 className="text-[18px] font-bold text-[#EDEEF2] tracking-tight mb-3">
+                  {!section.highlight && `${i}. `}{section.title}
+                </h2>
+                <div className="text-[14px] text-[#72728A] leading-[1.85] whitespace-pre-line">
+                  {section.body}
                 </div>
-              ))}
-            </div>
-            <a
-              href={STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-center px-6 py-3.5 rounded-xl bg-teal text-bg text-sm font-bold hover:opacity-90 transition-opacity shadow-[0_8px_24px_rgba(6,182,212,0.2)]"
-            >
-              Add to Chrome — Free
-            </a>
-          </div>
-
-          {/* Pro */}
-          <div className="bg-bg2 border border-border rounded-2xl p-8 relative shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
-            <div className="absolute -top-3.5 left-8">
-              <span className="text-[10px] font-bold tracking-wide px-3 py-1.5 rounded-full bg-bg3 border border-border text-text-muted">
-                ROADMAP — NOT LIVE
-              </span>
-            </div>
-            <div className="text-sm font-bold text-text-muted mb-2 mt-2">
-              Pro
-            </div>
-            <div className="flex items-baseline gap-1.5 mb-8">
-              <span className="text-5xl font-extrabold text-text-muted">
-                TBD
-              </span>
-            </div>
-            <div className="flex flex-col gap-3.5 mb-8">
-              {proFeatures.map((f) => (
-                <div key={f} className="flex items-center gap-3">
-                  <span className="text-text-muted font-bold flex-shrink-0">
-                    ✓
-                  </span>
-                  <span className="text-[13px] text-text-muted">{f}</span>
-                </div>
-              ))}
-            </div>
-            <div className="block text-center px-6 py-3.5 rounded-xl bg-bg3 border border-border text-text-muted text-sm font-bold cursor-not-allowed select-none">
-              Not available yet
-            </div>
+              </div>
+            ))}
           </div>
         </div>
-
-        <div className="max-w-[600px] mx-auto bg-bg2 border border-border rounded-2xl p-8 text-center shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
-          <h2 className="text-base font-bold mb-3">
-            Why we&apos;re not charging yet
-          </h2>
-          <p className="text-[13px] text-[#8aa8ac] leading-relaxed">
-            We&apos;d rather build the Pro tier around what real users actually
-            ask for than guess and gate features nobody wants. If you want to be
-            notified when Pro launches, install the free extension first —
-            we&apos;ll let everyone know inside the popup when it&apos;s ready.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
+      </main>
+      <Footer />
+    </>
+  )
 }

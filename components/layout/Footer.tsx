@@ -1,29 +1,25 @@
-import Link from "next/link";
-import Image from "next/image";
+import Link from 'next/link'
+import Image from 'next/image'
 
 const links = {
   Product: [
-    { label: "Features", href: "/#features" },
-    { label: "Platforms", href: "/#platforms" },
-    { label: "Pricing", href: "/#pricing" },
-    { label: "Roadmap", href: "/#roadmap" },
+    { label: 'Features', href: '/#features' },
+    { label: 'Platforms', href: '/#platforms' },
+    { label: 'Pricing', href: '/#pricing' },
+    { label: 'Roadmap', href: '/#roadmap' },
   ],
   Resources: [
-    { label: "Blog", href: "/blog" },
-    { label: "Support", href: "/support" },
-    {
-      label: "GitHub",
-      href: "https://github.com/anu-ship-it/TokenPulse",
-      external: true,
-    },
-    { label: "Changelog", href: "/#roadmap" },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Support', href: '/support' },
+    { label: 'GitHub', href: 'https://github.com/anu-ship-it/TokenPulse', external: true },
+    { label: 'Changelog', href: '/changelog' },
   ],
   Legal: [
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "Terms", href: "/terms" },
-    { label: "Contact", href: "mailto:support@token-pulse.in", external: true },
+    { label: 'Privacy Policy', href: '/privacy' },
+    { label: 'Terms of Service', href: '/terms' },
+    { label: 'Contact', href: '/contact' },
   ],
-};
+}
 
 export default function Footer() {
   return (
@@ -42,9 +38,7 @@ export default function Footer() {
                   className="rounded-sm"
                 />
               </div>
-              <span className="text-sm font-bold text-[#EDEEF2]">
-                TokenPulse
-              </span>
+              <span className="text-sm font-bold text-[#EDEEF2]">TokenPulse</span>
             </Link>
             <p className="text-xs text-[#32324A] leading-relaxed mb-4">
               Live token tracking for developers who use AI tools daily.
@@ -61,9 +55,9 @@ export default function Footer() {
                 {group}
               </div>
               <ul className="flex flex-col gap-2.5">
-                {items.map((item) => (
+                {items.map(item => (
                   <li key={item.label}>
-                    {"external" in item && item.external ? (
+                    {'external' in item && item.external ? (
                       <a
                         href={item.href}
                         target="_blank"
@@ -91,9 +85,11 @@ export default function Footer() {
           <p className="font-mono text-[10px] text-[#32324A]">
             © 2026 TokenPulse · Alpha · All rights reserved
           </p>
-          <p className="font-mono text-[10px] text-[#32324A]">token-pulse.in</p>
+          <p className="font-mono text-[10px] text-[#32324A]">
+            token-pulse.in
+          </p>
         </div>
       </div>
     </footer>
-  );
+  )
 }
