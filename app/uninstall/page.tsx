@@ -4,6 +4,7 @@ import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import Button from "@/components/ui/Button";
 
+
 const STORE_URL =
   "https://chromewebstore.google.com/detail/tokenpulse-%E2%80%94-chatgpt-clau/oimclhdbljodjkankcnalklchfcehhic";
 const reasons = [
@@ -18,6 +19,7 @@ const reasons = [
 export default function UninstallPage() {
   const [selected, setSelected] = useState("");
   const [detail, setDetail] = useState("");
+  const [email, setEmail] = useState('');
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
@@ -28,7 +30,7 @@ export default function UninstallPage() {
       const res = await fetch("/api/uninstall", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ reason: selected || "not selected", detail }),
+        body: JSON.stringify({ reason: selected || "not selected", detail, email }),
       });
       setStatus(res.ok ? "success" : "error");
     } catch {
@@ -112,6 +114,16 @@ export default function UninstallPage() {
                 <div className="font-mono text-[10px] font-semibold uppercase tracking-widest text-[#32324A] mb-2">
                   Anything else? (optional)
                 </div>
+                <div className="font-mono text-[10px] font-semibold uppercase tracking-widest text-[#32324A] mb-2">
+                  Email (optional — get a reply)
+                </div>
+                <input
+                  type="email"
+                  placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-4 py-3 rounded-lg text-[13px] bg-[#141418] text-[#EDEEF2] placeholder-[#32324A] border border-white/8 focus:border-[rgba(108,95,255,0.4)] outline-none mb-5"
+                />
                 <textarea
                   rows={3}
                   placeholder="Tell us what we could have done better..."
