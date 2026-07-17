@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { resend, FROM_EMAIL, NOTIFICATION_EMAIL } from '@/lib/resend'
 import { appendToSheet } from '@/lib/sheets'
+import { waitlistEmail } from '@/lib/emails'
 
 export const dynamic = 'force-dynamic'
 
@@ -15,47 +16,28 @@ export async function POST(req: Request) {
     const timestamp = new Date().toISOString()
     const source = req.headers.get('referer') || 'direct'
 
+    // Write to Google Sheets
     await appendToSheet('Waitlist', [timestamp, email, source])
 
+    // Notify us
     await resend.emails.send({
       from: FROM_EMAIL,
       to: NOTIFICATION_EMAIL,
       subject: `New Pro waitlist signup: ${email}`,
-      html: `
-        <div style="font-family:monospace;background:#080809;color:#EDEEF2;padding:24px;border-radius:12px">
-          <h2 style="color:#6C5FFF;margin:0 0 16px">New Waitlist Signup</h2>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Time:</strong> ${timestamp}</p>
-          <p><strong>Source:</strong> ${source}</p>
-        </div>
-      `,
+      html: `<div style="font-family:monospace;background:#080809;color:#EDEEF2;padding:24px;border-radius:12px">
+        <h2 style="color:#6C5FFF;margin:0 0 16px">New Waitlist Signup</h2>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Time:</strong> ${timestamp}</p>
+        <p><strong>Source:</strong> ${source}</p>
+      </div>`,
     })
 
+    // Auto-responder to user
     await resend.emails.send({
       from: FROM_EMAIL,
       to: email,
-      subject: "You're on the TokenPulse Pro waitlist",
-      html: `
-        <div style="font-family:-apple-system,sans-serif;background:#080809;color:#EDEEF2;padding:32px;border-radius:16px;max-width:480px">
-          <h1 style="font-size:22px;font-weight:700;margin:0 0 8px;letter-spacing:-0.5px">You're on the list.</h1>
-          <p style="color:#72728A;line-height:1.7;margin:0 0 20px">
-            We'll email you the moment TokenPulse Pro is ready. As an early waitlist member,
-            your pricing is locked — even after we raise it at launch.
-          </p>
-          <h3 style="color:#00E5A0;font-size:14px;margin:0 0 12px">What's coming in Pro:</h3>
-          <ul style="color:#72728A;line-height:2;padding-left:20px;margin:0 0 24px">
-            <li>Unlimited AI providers (Grok, Perplexity, Cursor, Mistral + more)</li>
-            <li>90-day usage history with graphs</li>
-            <li>Rate limit predictions</li>
-            <li>Sync across Chrome, Edge, Brave, Arc, VSCode</li>
-            <li>Weekly AI usage email reports</li>
-            <li>Export CSV / JSON / PDF</li>
-          </ul>
-          <p style="color:#32324A;font-size:12px;font-family:monospace">
-            TokenPulse · token-pulse.in
-          </p>
-        </div>
-      `,
+      subject: "You're on the TokenPulse Pro waitlist ✓",
+      html: waitlistEmail(),
     })
 
     return NextResponse.json({ ok: true })
