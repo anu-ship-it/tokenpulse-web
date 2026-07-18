@@ -1,41 +1,45 @@
-import { notFound } from 'next/navigation'
-import Nav from '@/components/layout/Nav'
-import Footer from '@/components/layout/Footer'
-import MDXContent from '@/components/blog/MDXContent'
-import { getPost, getAllPosts } from '@/lib/blog'
-import { pageMetadata } from '@/lib/metadata'
-import Link from 'next/link'
+import { notFound } from "next/navigation";
+import Nav from "@/components/layout/Nav";
+import Footer from "@/components/layout/Footer";
+import MDXContent from "@/components/blog/MDXContent";
+import { getPost, getAllPosts } from "@/lib/blog";
+import { pageMetadata } from "@/lib/metadata";
+import Link from "next/link";
 
 export async function generateStaticParams() {
-  return getAllPosts().map(p => ({ slug: p.slug }))
+  return getAllPosts().map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params
-  const post = getPost(slug)
-  if (!post) return {}
-  return pageMetadata(post.title, post.description, `/blog/${post.slug}`)
+  const { slug } = await params;
+  const post = getPost(slug);
+  if (!post) return {};
+  return pageMetadata({
+    title: post.title,
+    description: post.description,
+    path: `/blog/${post.slug}`,
+  });
 }
 
 export default async function BlogPost({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params
-  const post = getPost(slug)
-  if (!post) notFound()
+  const { slug } = await params;
+  const post = getPost(slug);
+  if (!post) notFound();
 
   return (
     <>
       <Nav />
       <main className="relative min-h-screen">
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-[-300px] left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,rgba(108,95,255,0.04)_0%,transparent_60%)]"/>
+          <div className="absolute top-[-300px] left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,rgba(108,95,255,0.04)_0%,transparent_60%)]" />
         </div>
         <div className="relative z-10 max-w-[720px] mx-auto px-6 pt-32 pb-24">
           {/* Back */}
@@ -48,7 +52,7 @@ export default async function BlogPost({
 
           {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-5">
-            {post.tags.map(tag => (
+            {post.tags.map((tag) => (
               <span
                 key={tag}
                 className="font-mono text-[10px] font-semibold text-[#6C5FFF] bg-[rgba(108,95,255,0.10)] border border-[rgba(108,95,255,0.22)] px-2 py-0.5 rounded"
@@ -66,14 +70,16 @@ export default async function BlogPost({
           {/* Meta */}
           <div className="flex items-center gap-3 mb-12 pb-8 border-b border-white/5">
             <span className="font-mono text-[11px] text-[#32324A]">
-              {new Date(post.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
+              {new Date(post.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
               })}
             </span>
             <span className="text-[#32324A]">·</span>
-            <span className="font-mono text-[11px] text-[#32324A]">{post.readingTime}</span>
+            <span className="font-mono text-[11px] text-[#32324A]">
+              {post.readingTime}
+            </span>
           </div>
 
           {/* Content */}
@@ -88,8 +94,8 @@ export default async function BlogPost({
                 Try TokenPulse — it is free
               </h3>
               <p className="text-[13px] text-[#72728A] leading-relaxed mb-5">
-                See your token usage in real time across Claude, ChatGPT, Gemini and DeepSeek.
-                No API key, no account.
+                See your token usage in real time across Claude, ChatGPT, Gemini
+                and DeepSeek. No API key, no account.
               </p>
               <a
                 href="https://chromewebstore.google.com/detail/tokenpulse-%E2%80%94-chatgpt-clau/oimclhdbljodjkankcnalklchfcehhic"
@@ -105,5 +111,5 @@ export default async function BlogPost({
       </main>
       <Footer />
     </>
-  )
+  );
 }

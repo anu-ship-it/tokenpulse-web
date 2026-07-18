@@ -2,11 +2,12 @@ import Nav from '@/components/layout/Nav'
 import Footer from '@/components/layout/Footer'
 import { pageMetadata } from '@/lib/metadata'
 
-export const metadata = pageMetadata(
-  'Privacy Policy — TokenPulse',
-  'TokenPulse Privacy Policy. We collect no personal data. All usage data stays on your device.',
-  '/privacy'
-)
+export const metadata = pageMetadata({
+  title: "Pricing — TokenPulse",
+  description:
+    "Free forever plan plus Pro and Team tiers. Join the waitlist to lock early access pricing.",
+  path: "/pricing",
+});
 
 const sections = [
   {

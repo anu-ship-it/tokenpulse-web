@@ -4,11 +4,12 @@ import PostCard from "@/components/blog/PostCard";
 import { getAllPosts } from "@/lib/blog";
 import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = pageMetadata(
-  "Blog — TokenPulse",
-  "Tips, guides, and deep dives on AI token limits, rate limits, and getting more from Claude, ChatGPT, Gemini and DeepSeek.",
-  "/blog",
-);
+export const metadata = pageMetadata({
+  title: "Blog — TokenPulse",
+  description:
+    "Tips, guides, and deep dives on AI token limits, rate limits, and getting more from Claude, ChatGPT, Gemini and DeepSeek.",
+  path: "/blog",
+});
 
 export default function BlogPage() {
   const posts = getAllPosts();
