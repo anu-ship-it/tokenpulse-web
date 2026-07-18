@@ -72,7 +72,7 @@ export const defaultMetadata: Metadata = {
     description:
       "Live token tracking across Claude, ChatGPT, Gemini and DeepSeek. Free Chrome extension.",
     images: ["/og-image.png"],
-    creator: "@tokenpulse",
+    creator: "@tokenpulseapp",
   },
 
   robots: {
