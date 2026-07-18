@@ -46,15 +46,17 @@ export default function Nav() {
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-7">
-          {["Features", "Platforms", "Pricing", "Blog", "About"].map((item) => (
-            <Link
-              key={item}
-              href={item === "Blog" ? "/blog" : `/#${item.toLowerCase()}`}
-              className="text-sm text-[#72728A] hover:text-[#EDEEF2] transition-colors"
-            >
-              {item}
-            </Link>
-          ))}
+          {["Features", "Platforms", "Pricing", "Blog", "FAQ", "About"].map(
+            (item) => (
+              <Link
+                key={item}
+                href={item === "Blog" ? "/blog" : `/#${item.toLowerCase()}`}
+                className="text-sm text-[#72728A] hover:text-[#EDEEF2] transition-colors"
+              >
+                {item}
+              </Link>
+            ),
+          )}
         </div>
 
         {/* CTAs */}
@@ -104,7 +106,7 @@ export default function Nav() {
       {/* Mobile menu */}
       {open && (
         <div className="md:hidden bg-[#0E0E11] border-t border-white/5 px-6 py-4 flex flex-col gap-3">
-          {["Features", "Platforms", "Pricing", "Blog", "About"].map((item) => (
+          {["Features", "Platforms", "Pricing", "Blog", "FAQ", "About"].map((item) => (
             <Link
               key={item}
               href={item === "Blog" ? "/blog" : `/#${item.toLowerCase()}`}

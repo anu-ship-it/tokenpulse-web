@@ -10,6 +10,7 @@ import Roadmap from "@/components/sections/Roadmap";
 import Waitlist from "@/components/sections/Waitlist";
 import About from "@/components/sections/About";
 import Button from "@/components/ui/Button";
+import FAQ from '@/components/sections/FAQ'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
@@ -30,6 +31,9 @@ export default function Home() {
         <Roadmap />
         <Waitlist />
         <About />
+        <Roadmap />
+        <FAQ />
+        <Waitlist />
         <Analytics />
         <SpeedInsights />
 
