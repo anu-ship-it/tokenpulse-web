@@ -20,10 +20,11 @@ export const defaultMetadata: Metadata = {
   keywords: [
     "AI token tracker",
     "ChatGPT token tracker",
-    "Claude rate limit",
+    "Claude rate limit tracker", 
     "Gemini token tracker",
     "DeepSeek token tracker",
     "AI usage tracker",
+    "chrome extension token counter",
     "TokenPulse",
   ],
 

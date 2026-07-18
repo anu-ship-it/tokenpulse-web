@@ -12,7 +12,6 @@ const links = {
     { label: 'Blog', href: '/blog' },
     { label: 'Support', href: '/support' },
     { label: 'GitHub', href: 'https://github.com/anu-ship-it/TokenPulse', external: true },
-    { label: 'Changelog', href: '/changelog' },
     { label: 'Twitter / X', href: 'https://x.com/tokenpulseapp', external: true },
   ],
   Legal: [
