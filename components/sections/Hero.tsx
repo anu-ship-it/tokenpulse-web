@@ -81,6 +81,23 @@ export default function Hero() {
           </div>
         </div>
 
+        {/* Social proof */}
+      <div className="flex items-center gap-6 pt-2 flex-wrap">
+        <div className="flex items-center gap-2">
+          <div className="flex -space-x-1.5">
+            {['#6C5FFF','#00E5A0','#F59E0B','#EF4444'].map((color, i) => (
+              <div key={i} className="w-6 h-6 rounded-full border-2 border-[#080809] flex items-center justify-center text-[9px] font-bold text-white" style={{ background: color }}>
+                {['A','D','M','S'][i]}
+              </div>
+            ))}
+          </div>
+          <div>
+            <span className="text-[13px] font-semibold text-[#EDEEF2]">100+</span>
+            <span className="text-[13px] text-[#72728A]"> developers tracking their AI limits</span>
+          </div>
+        </div>
+      </div>
+
         {/* Right — popup mockup cropped */}
         <div className="flex-shrink-0 relative h-[460px] overflow-hidden lg:translate-x-9">
           {/* fade */}
@@ -235,9 +252,9 @@ function PopupMockup() {
       {/* Footer */}
       <div className="flex items-center justify-between px-3.5 py-2.5 border-t border-[#131313]">
         <div className="flex items-center gap-1">
-          <button className="text-[9px] text-[#4a9ba5]">⭐ review</button>
+          <button className="text-[9px] text-[#4a9ba5]">⭐ Review</button>
           <span className="text-[9px] text-[#222]">·</span>
-          <button className="text-[9px] text-[#4a9ba5]">help</button>
+          <button className="text-[9px] text-[#4a9ba5]">Help</button>
         </div>
         <button className="text-[9px] font-bold px-3 py-1 rounded-md bg-[rgba(34,197,94,0.08)] text-[#06b6d4] border border-[rgba(34,197,94,0.2)]">
           + New chat
