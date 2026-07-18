@@ -7,12 +7,10 @@ import Features from "@/components/sections/Features";
 import Platforms from "@/components/sections/Platform";
 import Pricing from "@/components/sections/Pricing";
 import Roadmap from "@/components/sections/Roadmap";
+import FAQ from "@/components/sections/FAQ";
 import Waitlist from "@/components/sections/Waitlist";
 import About from "@/components/sections/About";
 import Button from "@/components/ui/Button";
-import FAQ from '@/components/sections/FAQ'
-import { Analytics } from '@vercel/analytics/next'
-import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const STORE_URL =
   "https://chromewebstore.google.com/detail/tokenpulse-%E2%80%94-chatgpt-clau/oimclhdbljodjkankcnalklchfcehhic";
@@ -29,13 +27,9 @@ export default function Home() {
         <Platforms />
         <Pricing />
         <Roadmap />
-        <Waitlist />
-        <About />
-        <Roadmap />
         <FAQ />
         <Waitlist />
-        <Analytics />
-        <SpeedInsights />
+        <About />
 
         {/* Final CTA */}
         <section className="relative z-10 py-32 border-t border-white/5 bg-[#0E0E11] text-center overflow-hidden">

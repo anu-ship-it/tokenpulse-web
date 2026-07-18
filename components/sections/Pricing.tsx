@@ -235,7 +235,7 @@ export default function Pricing() {
 
         <p className="text-center font-mono text-[11px] text-[#32324A] mt-6 leading-loose">
           Pro and Team are in development. Joining the waitlist locks your early pricing.{" "}
-          <a href="mailto:tokenpulse10@gmail.com" className="text-[#6C5FFF] hover:underline">
+          <a href="mailto:support@token-pulse.in" className="text-[#6C5FFF] hover:underline">
             Questions?
           </a>
         </p>

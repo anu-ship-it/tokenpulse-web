@@ -38,12 +38,12 @@ const sections = [
   {
     title: 'Waitlist and contact forms',
     highlight: false,
-    body: `When you submit your email address via the Pro waitlist form or contact form, we store your email address and the content of your submission. This data is used only to contact you about TokenPulse Pro launch, respond to your message, and send product updates you have opted into. We do not sell, rent, or share this data with third parties. You can request deletion of your data at any time by emailing tokenpulse10@gmail.com.`,
+    body: `When you submit your email address via the Pro waitlist form or contact form, we store your email address and the content of your submission. This data is used only to contact you about TokenPulse Pro launch, respond to your message, and send product updates you have opted into. We do not sell, rent, or share this data with third parties. You can request deletion of your data at any time by emailing support@token-pulse.in.`,
   },
   {
     title: 'Email communications',
     highlight: false,
-    body: `If you join the Pro waitlist, you will receive a confirmation email and a notification when Pro launches. You may receive occasional product updates. You can unsubscribe from any email by replying with "unsubscribe" or emailing tokenpulse10@gmail.com.`,
+    body: `If you join the Pro waitlist, you will receive a confirmation email and a notification when Pro launches. You may receive occasional product updates. You can unsubscribe from any email by replying with "unsubscribe" or emailing support@token-pulse.in.`,
   },
   {
     title: 'Third-party services',
@@ -53,17 +53,17 @@ const sections = [
   {
     title: 'Data retention',
     highlight: false,
-    body: `Local extension data (usage history, settings) is stored in your browser indefinitely until you uninstall the extension or clear browser data. Waitlist and contact form submissions are retained until you request deletion. You can request deletion at any time by emailing tokenpulse10@gmail.com.`,
+    body: `Local extension data (usage history, settings) is stored in your browser indefinitely until you uninstall the extension or clear browser data. Waitlist and contact form submissions are retained until you request deletion. You can request deletion at any time by emailing support@token-pulse.in.`,
   },
   {
     title: 'Your rights',
     highlight: false,
-    body: `You have the right to access, correct, or delete any personal data we hold about you. Since the extension stores all data locally on your device, you control that data directly through your browser settings. For data submitted through our website forms (waitlist, contact), email tokenpulse10@gmail.com and we will respond within 30 days.`,
+    body: `You have the right to access, correct, or delete any personal data we hold about you. Since the extension stores all data locally on your device, you control that data directly through your browser settings. For data submitted through our website forms (waitlist, contact), email support@token-pulse.in and we will respond within 30 days.`,
   },
   {
     title: 'Children',
     highlight: false,
-    body: `TokenPulse is not directed at children under 13. We do not knowingly collect personal information from children. If you believe a child has submitted personal information, contact us at tokenpulse10@gmail.com and we will delete it promptly.`,
+    body: `TokenPulse is not directed at children under 13. We do not knowingly collect personal information from children. If you believe a child has submitted personal information, contact us at support@token-pulse.in and we will delete it promptly.`,
   },
   {
     title: 'Changes to this policy',
@@ -73,7 +73,7 @@ const sections = [
   {
     title: 'Contact',
     highlight: false,
-    body: `Questions about this Privacy Policy? Email tokenpulse10@gmail.com or visit token-pulse.in/contact. We will respond within 30 days.`,
+    body: `Questions about this Privacy Policy? Email support@token-pulse.in or visit token-pulse.in/contact. We will respond within 30 days.`,
   },
 ]
 
