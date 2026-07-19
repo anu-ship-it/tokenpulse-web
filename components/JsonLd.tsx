@@ -48,7 +48,7 @@ export default function JsonLd() {
     url: siteUrl,
     logo: `${siteUrl}/icon.png`,
     description: 'TokenPulse builds developer tools for AI usage tracking.',
-    email: 'tokenpulse10@gmail.comulse.in',
+    email: 'tokenpulse10@gmail.com',
     sameAs: [
       'https://github.com/anu-ship-it/TokenPulse',
     ],

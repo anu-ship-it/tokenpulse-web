@@ -60,10 +60,10 @@ export default function FAQ() {
             <p className="text-[14px] text-[#72728A] leading-relaxed mb-6">
               Anything else? Email us at{" "}
               <a
-                href="mailto:tokenpulse10@gmail.comulse.in"
+                href="mailto:tokenpulse10@gmail.com"
                 className="text-[#6C5FFF] hover:underline"
               >
-                tokenpulse10@gmail.comulse.in
+                tokenpulse10@gmail.com
               </a>
             </p>
 

@@ -147,10 +147,10 @@ export default function SupportPage() {
                   <p className="font-mono text-[10px] text-[#EF4444] text-center">
                     Something went wrong. Email{" "}
                     <a
-                      href="mailto:tokenpulse10@gmail.comulse.in"
+                      href="mailto:tokenpulse10@gmail.com"
                       className="underline"
                     >
-                      tokenpulse10@gmail.comulse.in
+                      tokenpulse10@gmail.com
                     </a>{" "}
                     directly.
                   </p>
@@ -160,10 +160,10 @@ export default function SupportPage() {
             <p className="font-mono text-[11px] text-[#32324A] text-center mt-5">
               Or email{" "}
               <a
-                href="mailto:tokenpulse10@gmail.comulse.in"
+                href="mailto:tokenpulse10@gmail.com"
                 className="text-[#6C5FFF] hover:underline"
               >
-                tokenpulse10@gmail.comulse.in
+                tokenpulse10@gmail.com
               </a>{" "}
               directly
             </p>
