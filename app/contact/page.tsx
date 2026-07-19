@@ -67,7 +67,7 @@ export default function ContactPage() {
               {/* Contact methods */}
               <div className="flex flex-col gap-3">
                 {[
-                  { label: 'General & Support', value: 'support@token-pulse.in', href: 'mailto:support@token-pulse.in' },
+                  { label: 'General & Support', value: 'tokenpulse10@gmail.comulse.in', href: 'mailto:tokenpulse10@gmail.comulse.in' },
                   { label: 'GitHub', value: 'github.com/anu-ship-it/TokenPulse', href: 'https://github.com/anu-ship-it/TokenPulse' },
                 ].map(item => (
                   <div key={item.label} className="bg-[#0E0E11] border border-white/8 rounded-xl p-5">
@@ -164,7 +164,7 @@ export default function ContactPage() {
                   {status === 'error' && (
                     <p className="font-mono text-[10px] text-[#EF4444] text-center">
                       Something went wrong. Email{' '}
-                      <a href="mailto:support@token-pulse.in" className="underline">support@token-pulse.in.</a> directly.
+                      <a href="mailto:tokenpulse10@gmail.comulse.in" className="underline">tokenpulse10@gmail.comulse.in.</a> directly.
                     </p>
                   )}
                 </form>

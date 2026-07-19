@@ -52,7 +52,7 @@ const sections = [
   },
   {
     title: 'Contact',
-    body: `Questions about these terms? Email support@token-pulse.in or visit token-pulse.in/contact.`,
+    body: `Questions about these terms? Email tokenpulse10@gmail.comulse.in or visit token-pulse.in/contact.`,
   },
 ]
 
