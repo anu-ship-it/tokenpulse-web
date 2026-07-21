@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  "https://www.token-pulse.in";
+  "https://token-pulse.in";
 
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -20,7 +20,7 @@ export const defaultMetadata: Metadata = {
   keywords: [
     "AI token tracker",
     "ChatGPT token tracker",
-    "Claude rate limit tracker", 
+    "Claude rate limit tracker",
     "Gemini token tracker",
     "DeepSeek token tracker",
     "AI usage tracker",
@@ -39,6 +39,14 @@ export const defaultMetadata: Metadata = {
     title: "TokenPulse — Never lose your flow to an AI rate limit again",
     description:
       "Track AI token usage and rate limits across ChatGPT, Claude, Gemini, and DeepSeek.",
+    images: [
+      {
+        url: `${siteUrl}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "TokenPulse — Live token tracking for developers",
+      },
+    ],
   },
 
   twitter: {
