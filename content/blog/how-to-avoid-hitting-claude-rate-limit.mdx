@@ -1,0 +1,80 @@
+---
+title: "How to Avoid Hitting Claude's Rate Limit: 7 Strategies That Actually Work"
+description: "Practical strategies for developers to extend Claude usage, avoid hitting the 5-hour and 7-day rate limits mid-session, and get more out of every window."
+date: "2026-07-15"
+tags: ["claude", "rate limits", "developer tips"]
+published: true
+---
+
+Claude's rate limits exist for a reason — they prevent any one user from consuming disproportionate compute resources. But hitting them mid-session, with no warning, mid-debugging, is one of the most disruptive experiences in modern development workflows.
+
+These strategies are not workarounds or hacks. They are genuine workflow improvements that happen to reduce token consumption as a side effect.
+
+## 1. Know your limits before you start
+
+The most basic mistake: starting a heavy session without checking where you stand on both limits.
+
+Claude has a 5-hour session limit and a 7-day weekly limit. Both reset independently and on a rolling basis. You could be at 0% on the weekly limit but 80% on the session limit — or vice versa.
+
+Before starting any session that will run more than 30 minutes, check both numbers. [TokenPulse](https://token-pulse.in) shows both in the popup with exact percentages and countdown timers. If you are at 70% of your 5-hour window, either work quickly or wait for the reset — do not start a 2-hour debugging session only to hit the wall at the critical moment.
+
+## 2. Start new conversations for each distinct problem
+
+Every message in a conversation adds to its context window. If you are debugging three separate functions in the same conversation, you are carrying the full context of the first two problems while working on the third.
+
+The discipline of starting a new conversation for each distinct problem does two things: it reduces token consumption per session, and it produces better answers because the model is not confused by unrelated context from earlier in the conversation.
+
+The rule of thumb: if you have changed topics, start a new chat.
+
+## 3. Paste targeted context, not entire files
+
+The single biggest token waste in developer workflows is pasting entire files when only a portion is relevant. A 500-line file is approximately 25,000-30,000 tokens. The function you actually need help with might be 50 lines — roughly 2,500 tokens.
+
+Paste the specific function, the relevant class, or the section of code that matters. Add 10-15 lines of surrounding context for clarity. You get equally good answers — often better, because the model is not distracted by irrelevant code — and use a fraction of the tokens.
+
+## 4. Summarize and restart at 60% context
+
+Do not wait until Claude tells you the conversation is too long. By that point, the model has already been giving you degraded responses for several exchanges as attention to early context has weakened.
+
+At 60% of the context window — visible in real time on the [TokenPulse](https://token-pulse.in) bar — ask Claude to summarize:
+
+> "Summarize the key decisions, constraints, and current state of what we have built in under 200 words."
+
+Start a new conversation with that summary. You preserve everything that matters and reset the context overhead.
+
+## 5. Use Haiku for simple tasks, save Opus for hard ones
+
+Claude Haiku and Sonnet consume the same rate limit quota but produce answers at different quality levels. The mistake most developers make is defaulting to the most capable model for every task.
+
+Use Haiku or Sonnet for:
+- Formatting and code cleanup
+- Writing boilerplate
+- Simple transformations
+- Quick lookups and definitions
+
+Reserve Opus for:
+- Complex architectural decisions
+- Subtle bugs that require deep reasoning
+- Novel problems with no obvious solution
+
+Your 5-hour and 7-day quotas go significantly further when you match model capability to task complexity.
+
+## 6. Use Projects for stable context
+
+If you find yourself pasting the same system context at the start of every session — your project's tech stack, coding conventions, constraints — you are wasting tokens on every session.
+
+Claude Projects let you store stable context that persists across conversations without consuming your message quota. Put your system instructions, project background, and architectural decisions in a Project. Start every conversation from that Project. Your first message is immediately contextual without the overhead of re-establishing the setup.
+
+## 7. Time heavy sessions around the reset
+
+The 5-hour window resets 5 hours after your first message. If you hit the limit at 2pm, it resets at 7pm — not at midnight, not on the hour.
+
+[TokenPulse](https://token-pulse.in) shows the exact reset time in the popup. If you are at 90% of the 5-hour window and have 45 minutes until reset, it is often worth waiting rather than hitting the limit mid-task. The notification at 90% gives you enough warning to either wrap up your current task or pause strategically.
+
+## Putting it together
+
+None of these strategies requires significant behavior change. The biggest gains come from two habits: checking your limits before starting heavy sessions, and starting new conversations when you change topics.
+
+[TokenPulse](https://token-pulse.in) makes the first habit frictionless — the bar is always there, the popup shows both limits in one click. The second habit is just discipline.
+
+Combined, these strategies typically extend effective Claude usage by 40-60% without reducing the quality of work produced.

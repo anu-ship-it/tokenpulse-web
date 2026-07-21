@@ -1,0 +1,61 @@
+---
+title: "AI Cost Tracking for Developers: How to Know What You're Actually Spending"
+description: "Most developers using Claude, ChatGPT, Gemini and Cursor have no idea what their real monthly AI spend looks like. Here is how to track it accurately."
+date: "2026-07-05"
+tags: ["cost tracking", "developer tools", "AI budget"]
+published: true
+---
+
+If you asked most developers what they spent on AI last month, they would guess. The actual number is usually higher than the guess — sometimes by 2-3x.
+
+The problem is fragmentation. Claude Pro is $20/month flat. ChatGPT Plus is $20/month flat. But Cursor, Copilot, and direct API usage add variable costs on top. Most developers have three or four AI subscriptions running simultaneously with no unified view of total spend.
+
+## Why flat subscriptions hide the real cost
+
+A $20/month Claude subscription feels like a fixed cost. But Claude Pro is a rate-limited subscription, not truly unlimited. When you hit the rate limit mid-session and switch to ChatGPT to continue — you have just consumed quota from two subscriptions for one task.
+
+Multiply this by a full workday of development work and the real cost per productive hour of AI assistance is much higher than the headline subscription price suggests.
+
+## The variable cost problem with API usage
+
+Developers who use Claude or OpenAI via API — through Cursor, custom scripts, or direct API calls — face a genuinely variable cost. GPT-4o costs $2.50 per million input tokens and $10 per million output tokens. Claude Sonnet 4 has similar pricing.
+
+A heavy debugging session with large code pastes can consume 50,000-100,000 tokens in an hour. That is $0.13 to $0.25 for one hour of API usage — which sounds trivial until you realize that is $1-2 per day, $30-60 per month, just from debugging sessions.
+
+## What you actually need to track
+
+**Per-conversation cost** — how much did this specific debugging session cost? This tells you whether your approach was token-efficient or whether you pasted too much context unnecessarily.
+
+**Daily cost** — your peak spend day versus your average day. High variance here usually indicates specific tasks that are unusually token-heavy.
+
+**Weekly and monthly totals** — the number that actually matters for budgeting.
+
+**Per-platform breakdown** — are you spending more on Claude or ChatGPT? This tells you where your primary workflow lives and where optimization would have the most impact.
+
+## How TokenPulse tracks cost without an API key
+
+[TokenPulse](https://token-pulse.in) estimates cost by reading token usage from your browser session and applying current model pricing. For Claude, it reads the actual token counts from Claude's internal API. For ChatGPT and Gemini, it estimates from the conversation DOM.
+
+The popup shows:
+- This conversation's estimated cost
+- Today's estimated spend across all sessions on that platform
+- This week's total
+
+The accuracy is ±8% — not billing-grade precision, but sufficient for understanding whether you spent $0.50 or $5 on a session and whether your weekly spend is $2 or $20.
+
+## Practical strategies to reduce AI spend
+
+**Stop pasting entire files.** The single biggest token waste in developer workflows is pasting a 500-line file when you only need 30 lines around the function you are debugging. Paste the specific function plus 10-15 lines of context. You get equally good answers and use a fraction of the tokens.
+
+**Use faster models for iteration.** Claude Haiku and GPT-4o mini cost 10-20x less than their premium counterparts. Use them for the first 80% of a problem — formatting, boilerplate, quick lookups — and switch to the premium model only for the final architectural decision or complex debugging.
+
+**Start new conversations deliberately.** Context accumulates silently. A conversation that started with one problem and evolved into three separate problems is carrying the token overhead of all three. Starting a new conversation for each distinct problem costs nothing and saves significant tokens.
+
+**Summarize before continuing long sessions.** When a debugging session runs long, ask the model to summarize the key findings and current state in under 200 words, start a new conversation with just that summary, and continue from there. You preserve what matters and reset the accumulated context overhead.
+
+## Summary
+
+- Most developers underestimate their real AI spend because it is fragmented across multiple subscriptions and variable API usage
+- Per-conversation and per-day cost tracking reveals which tasks are unusually expensive
+- [TokenPulse](https://token-pulse.in) tracks estimated cost across Claude, ChatGPT, Gemini and DeepSeek in real time — no API key required
+- The biggest cost reduction comes from targeted context pasting, model selection discipline, and deliberate conversation management

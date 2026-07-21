@@ -1,0 +1,62 @@
+---
+title: "Gemini Token Limits Explained: Context Window, Rate Limits, and How to Track Them"
+description: "Everything developers need to know about Gemini's context window, token limits, and how to monitor usage in real time without an API key."
+date: "2026-07-01"
+tags: ["gemini", "token limits", "developer guide"]
+published: true
+---
+
+Gemini has the largest context window of any major consumer AI platform — 1 million tokens in Gemini 1.5 Pro. That sounds unlimited until you're deep in a document analysis session and things start going wrong. This guide explains Gemini's limits, how they differ from Claude and ChatGPT, and how to track them in real time.
+
+## Gemini's context window is genuinely different
+
+While Claude caps out at 200,000 tokens and GPT-4o at 128,000, Gemini 1.5 Pro supports up to 1,000,000 tokens. This isn't a marketing number — it's real and usable. You can paste an entire codebase, a full book, or hours of meeting transcripts and Gemini will handle it.
+
+The practical implication: you're far less likely to hit a context limit on Gemini than on Claude or ChatGPT. But "far less likely" isn't the same as impossible, especially for developers working with large datasets, long code reviews, or multi-document analysis.
+
+## What Gemini does and doesn't expose
+
+Unlike Claude, which exposes rate limit data through an internal API endpoint, Gemini doesn't surface utilization percentages or countdown timers in a machine-readable way. This means:
+
+- You can't get an exact "you've used X% of your context" reading from Gemini's API in the browser session
+- Token counts are estimated from the conversation DOM rather than read from an authoritative source
+- There are no session or weekly rate limits visible the way Claude exposes them
+
+This is why tools like [TokenPulse](https://token-pulse.in) use client-side estimation for Gemini — counting characters and dividing by approximately 4 to estimate token usage. The accuracy is ±8%, which is sufficient for knowing whether you're at 20% or 80% of your context window.
+
+## Gemini Flash vs Gemini Pro — the token economics
+
+Gemini Flash is dramatically cheaper than Pro and still has a large context window (1M tokens in Flash 1.5). For most developer tasks, Flash is the right choice:
+
+- **Use Flash for:** Code review, quick questions, formatting, summarization
+- **Use Pro for:** Complex reasoning, multi-step analysis, tasks requiring sustained accuracy over long contexts
+
+Token consumption is the same regardless of which model you use — the difference is quality and cost, not context window size.
+
+## How to track Gemini token usage in real time
+
+[TokenPulse](https://token-pulse.in) injects a live token bar above Gemini's input box that shows your estimated context usage as a percentage. It updates after every message.
+
+Given Gemini's 1M token window, the bar will rarely go above 10-20% for typical usage — but for document-heavy sessions it's useful to have a visual indicator rather than guessing.
+
+Setup:
+1. Install TokenPulse from the Chrome Web Store — free, no API key
+2. Open gemini.google.com
+3. The bar appears automatically above the input box
+
+## Practical tips for Gemini sessions
+
+**Don't paste entire files when a function will do.** Even with a 1M token window, targeted context produces better answers than dumping everything in.
+
+**Use Gems for stable context.** If you have system instructions or context you reuse across sessions, put them in a Gem rather than pasting them every time.
+
+**Flash for iteration, Pro for final analysis.** Draft and iterate with Flash, then run the final analysis with Pro when the output matters.
+
+**Watch the bar on multi-document sessions.** Pasting 10 large documents can consume 200-300k tokens quickly. The TokenPulse bar makes this visible.
+
+## Summary
+
+- Gemini 1.5 Pro has a 1M token context window — the largest of any major consumer AI
+- Gemini doesn't expose rate limit data the way Claude does — usage is estimated client-side
+- Flash and Pro share the same context window size but differ in quality and cost
+- [TokenPulse](https://token-pulse.in) tracks Gemini context usage in real time with no API key required

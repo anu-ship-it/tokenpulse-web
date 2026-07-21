@@ -1,0 +1,78 @@
+---
+title: "Claude Context Window Full: What Happens and How to Avoid It"
+description: "What actually happens when Claude's context window fills up, why the model behavior changes before the limit, and how to avoid losing hours of work."
+date: "2026-07-10"
+tags: ["claude", "context window", "developer guide"]
+published: true
+---
+
+You are deep in a debugging session with Claude. The responses start feeling slightly off — the model seems to have forgotten something you established earlier. Then a message comes back that ignores a constraint you defined at the start of the conversation. Eventually Claude stops responding altogether or tells you the conversation is too long.
+
+This is what a full context window looks like in practice. Understanding what is happening — and why the degradation starts before the hard limit — helps you work around it before it becomes a problem.
+
+## What the context window actually contains
+
+Claude's context window is not just your messages and Claude's responses. It contains everything in the conversation in order:
+
+- Your system prompt or custom instructions if you have set them
+- Every user message in the conversation
+- Every Claude response in the conversation
+- Any files or documents you have pasted
+- Tool use outputs if you are using Claude's tool features
+
+All of this accumulates as tokens. Claude Sonnet 4 has a 200,000 token context window. That sounds large until you paste a 500-line file (roughly 30,000 tokens), get several detailed responses (another 20,000-40,000 tokens), and realize you have consumed 25-35% of your context window in a single exchange.
+
+## Why degradation starts before the limit
+
+The most important thing most developers do not know: Claude's quality degrades significantly before the context window is full.
+
+Research on large language models consistently shows that attention — the mechanism models use to "remember" earlier content — weakens for content that is far back in the context. In a very long conversation, Claude can technically "see" everything, but its effective attention to content from early in the conversation diminishes as more content is added.
+
+Practically, this means:
+
+- Constraints you defined at the start of the conversation get progressively ignored
+- Earlier architectural decisions get forgotten
+- The model may contradict something it agreed to 20 messages ago
+- Code quality tends to decrease as conversations run longer
+
+This degradation typically becomes noticeable around 60-70% of the context window, well before the hard limit. By the time the context is 80% full, you are often getting meaningfully worse responses than you would get in a fresh conversation with a good summary.
+
+## The two limits you need to track
+
+Claude has two rate limits that are separate from the context window:
+
+**The 5-hour session limit** tracks your message volume within any rolling 5-hour window. This resets independently of the context window and resets on a rolling basis from your first message.
+
+**The 7-day weekly limit** tracks cumulative usage across 7 days. Heavy users can hit this limit even when their context window is empty.
+
+You can be rate limited without having a full context window, and you can have a full context window without being rate limited. Both need to be monitored independently.
+
+[TokenPulse](https://token-pulse.in) shows all three — context window percentage, 5-hour session utilization, and 7-day utilization — simultaneously in the popup, which is the only way to see the full picture at once without guessing.
+
+## The right time to start a new conversation
+
+The common mistake is waiting until Claude tells you the conversation is too long. By that point you have already been getting degraded responses for a while.
+
+The right trigger is **60% of the context window**. At 60%, you still have enough headroom for Claude to give you a useful summary of the conversation. Ask for it, start a new conversation, paste the summary, and continue from there.
+
+The summary should include:
+- The problem you were solving and any constraints established
+- Key decisions already made and the reasoning behind them
+- Current state — what has been implemented, what is still to do
+- Any specific code snippets or data structures that need to carry forward
+
+This summary approach typically condenses 40,000 tokens of conversation into 1,000-2,000 tokens while preserving everything that matters for continuity.
+
+## How to see your context window in real time
+
+Claude does not show you the context window percentage in the interface. The only way to see it is through the internal API that Claude uses to track usage — which is what [TokenPulse](https://token-pulse.in) reads.
+
+The live bar above the input box updates after every message, showing you the percentage in real time. When it hits 60%, that is your signal to summarize and restart. When it hits 75%, the built-in notification fires so you cannot miss it even if you are focused on coding.
+
+## Summary
+
+- Claude's context window contains all messages, responses, and pasted content — it fills faster than most developers expect
+- Quality degrades noticeably at 60-70% capacity, not just at the hard limit
+- Claude has two separate rate limits (5-hour and 7-day) that are independent of the context window
+- The right time to restart a conversation is at 60% — not when Claude tells you it is too long
+- [TokenPulse](https://token-pulse.in) shows context window, session limit, and weekly limit simultaneously in real time
