@@ -97,7 +97,7 @@ export default function Hero() {
                 )}
               </div>
               <span className="text-[13px] text-[#72728A]">
-                <strong className="text-[#EDEEF2]">500+</strong> developers
+                <strong className="text-[#EDEEF2]">100+</strong> developers
                 tracking their AI limits
               </span>
             </div>
