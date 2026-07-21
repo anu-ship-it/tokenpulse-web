@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  "https://token-pulse.in";
+  "https://www.token-pulse.in";
 
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(siteUrl),
