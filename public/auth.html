@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sign in — TokenPulse</title>
+<style>
+  body { font-family: -apple-system, sans-serif; background: #080808; color: #f0f0f0;
+         display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+  .box { max-width: 340px; width: 100%; padding: 24px; }
+  h1 { font-size: 18px; margin-bottom: 16px; }
+  input { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px;
+          border: 1px solid #222; background: #111; color: #fff; box-sizing: border-box; }
+  button { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px;
+           border: none; cursor: pointer; font-weight: 600; }
+  #magic-link-btn { background: #06b6d4; color: #000; }
+  #google-btn { background: #1a1a1a; color: #fff; border: 1px solid #333; }
+  #status { font-size: 13px; color: #999; margin-top: 12px; }
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>Sign in to TokenPulse</h1>
+  <input type="email" id="email-input" placeholder="you@example.com">
+  <button id="magic-link-btn">Send magic link</button>
+  <button id="google-btn">Continue with Google</button>
+  <div id="status"></div>
+</div>
+
+<script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+  // Replace with your actual Project URL / anon key from
+  // Supabase → Project Settings → API. The anon key is safe to expose
+  // client-side by design — it's meant to be public, RLS is what
+  // actually protects the data, not keeping this key secret.
+  const SUPABASE_URL = "https://YOUR-PROJECT.supabase.co";
+  const SUPABASE_ANON_KEY = "YOUR-ANON-KEY";
+
+  // From chrome://extensions with Developer Mode on, under TokenPulse.
+  // This must match exactly or onMessageExternal in service-worker.js
+  // will simply never receive anything — Chrome enforces this silently,
+  // no error is thrown on a mismatch, it just won't connect.
+  const EXTENSION_ID = "YOUR-EXTENSION-ID-HERE";
+
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  const statusEl = document.getElementById('status');
+
+  function setStatus(text) { statusEl.textContent = text; }
+
+  document.getElementById('magic-link-btn').addEventListener('click', async () => {
+    const email = document.getElementById('email-input').value.trim();
+    if (!email) { setStatus('Enter your email first.'); return; }
+    setStatus('Sending...');
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: { emailRedirectTo: window.location.href },
+    });
+    setStatus(error ? `Error: ${error.message}` : 'Check your email for the sign-in link.');
+  });
+
+  document.getElementById('google-btn').addEventListener('click', async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: window.location.href },
+    });
+  });
+
+  // On load: Supabase automatically reads the session out of the URL
+  // hash if this page was just landed on via a magic link click or an
+  // OAuth redirect. If a session exists, hand it to the extension.
+  async function checkSessionAndHandoff() {
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session) return;
+
+    setStatus('Signed in — connecting to extension...');
+
+    if (!chrome?.runtime?.sendMessage) {
+      setStatus('Signed in, but this page needs to be opened in Chrome with the TokenPulse extension installed to finish connecting.');
+      return;
+    }
+
+    chrome.runtime.sendMessage(EXTENSION_ID, { type: 'AUTH_SUCCESS', session }, (response) => {
+      if (chrome.runtime.lastError) {
+        setStatus('Signed in, but could not reach the extension. Is TokenPulse installed?');
+        return;
+      }
+      if (response?.ok) {
+        document.querySelector('.box').innerHTML =
+          '<h1>You\'re signed in ✓</h1><p style="color:#999;font-size:14px">You can close this tab and return to the extension.</p>';
+      }
+    });
+  }
+
+  checkSessionAndHandoff();
+
+  // Also handle the case where Supabase's auth state changes after this
+  // page has already loaded (e.g. magic link clicked in a different tab
+  // that redirected back here) rather than only checking once on load.
+  supabase.auth.onAuthStateChange((_event, session) => {
+    if (session) checkSessionAndHandoff();
+  });
+</script>
+</body>
+</html>
