@@ -33,14 +33,14 @@
   // Supabase → Project Settings → API. The anon key is safe to expose
   // client-side by design — it's meant to be public, RLS is what
   // actually protects the data, not keeping this key secret.
-  const SUPABASE_URL = "https://YOUR-PROJECT.supabase.co";
-  const SUPABASE_ANON_KEY = "YOUR-ANON-KEY";
+  const SUPABASE_URL = "https://didixxqgrwoxytphiabx.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRpZGl4eHFncndveHl0cGhpYWJ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYxMjgzMzYsImV4cCI6MjEwMTcwNDMzNn0.1GOWsOpMVIq1TcmRAy9aJw6pIRdTsIGi72560veCDQg";
 
   // From chrome://extensions with Developer Mode on, under TokenPulse.
   // This must match exactly or onMessageExternal in service-worker.js
   // will simply never receive anything — Chrome enforces this silently,
   // no error is thrown on a mismatch, it just won't connect.
-  const EXTENSION_ID = "YOUR-EXTENSION-ID-HERE";
+  const EXTENSION_ID = "oimclhdbljodjkankcnalklchfcehhic";
 
   const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   const statusEl = document.getElementById('status');
