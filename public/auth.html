@@ -87,7 +87,12 @@
       if (response?.ok) {
         document.querySelector('.box').innerHTML =
           '<h1>You\'re signed in ✓</h1><p style="color:#999;font-size:14px">You can close this tab and return to the extension.</p>';
+        return;
       }
+      // Extension responded but explicitly rejected the message (e.g. an
+      // origin check failing) — show why instead of leaving the page
+      // frozen on "connecting to extension..." with no visible outcome.
+      setStatus(`Signed in, but the extension rejected the connection: ${response?.error || 'unknown reason'}`);
     });
   }
 
