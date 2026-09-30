@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="text-xs text-text-muted text-center md:text-left">
         © {new Date().getFullYear()}{" "}
         <span className="text-teal-dim">TokenPulse</span> · Built by Anoop
-        Kumar and Mansi Rathore · Alpha
+        Kumar · Alpha
       </div>
       <div className="flex items-center gap-5">
         <Link
