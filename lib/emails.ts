@@ -50,7 +50,7 @@ const wrapper = (content: string) => `
                 TokenPulse · <a href="${BASE_URL}" style="color:#32324A;text-decoration:none;">token-pulse.in</a>
               </p>
               <p style="font-family:monospace;font-size:10px;color:#32324A;margin:0;">
-                Built by Anoop Kumar &amp; Mansi Rathore
+                Built by Anoop Kumar
               </p>
             </td>
           </tr>

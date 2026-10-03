@@ -46,18 +46,7 @@ export default function About() {
                 Team
               </div>
               <div className="flex flex-col gap-4">
-                {[
-                  {
-                    initials: "AK",
-                    name: "Anoop Kumar",
-                    role: "Product & Engineering",
-                  },
-                  {
-                    initials: "MR",
-                    name: "Mansi Rathore",
-                    role: "Design & Product",
-                  },
-                ].map((person) => (
+                {[{ initials: "AK", name: "Anoop Kumar", role: "Product \u0026 Engineering" }].map((person) => (
                   <div key={person.name} className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-xl bg-[rgba(108,95,255,0.12)] border border-[rgba(108,95,255,0.22)] flex items-center justify-center font-mono text-[11px] font-bold text-[#6C5FFF] flex-shrink-0">
                       {person.initials}
@@ -122,3 +111,5 @@ export default function About() {
     </section>
   );
 }
+
+

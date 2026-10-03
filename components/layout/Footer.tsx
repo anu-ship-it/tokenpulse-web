@@ -44,7 +44,7 @@ export default function Footer() {
               Live token tracking for developers who use AI tools daily.
             </p>
             <p className="font-mono text-[10px] text-[#32324A]">
-              Built by Anoop Kumar & Mansi Rathore
+              Built by Anoop Kumar
             </p>
           </div>
 

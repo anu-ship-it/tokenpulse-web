@@ -52,10 +52,7 @@ export default function JsonLd() {
     sameAs: [
       'https://github.com/anu-ship-it/TokenPulse',
     ],
-    founder: [
-      { '@type': 'Person', name: 'Anoop Kumar' },
-      { '@type': 'Person', name: 'Mansi Rathore' },
-    ],
+    founder: [{ '@type': 'Person', name: 'Anoop Kumar' }],
   }
 
   const website = {
@@ -91,3 +88,4 @@ export default function JsonLd() {
     </>
   )
 }
+
